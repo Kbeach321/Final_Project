@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'consolelog_app'
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    'consolelog_app',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'consolelog_app.User'
 
 import django_heroku
 django_heroku.settings(locals())
