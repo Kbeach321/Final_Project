@@ -5,6 +5,9 @@ from rest_framework import generics
 from consolelog_app.models import Timestamp
 from consolelog_app.serializers import TimestampSerializer
 
+############### API_KEY ##########################
+from django.conf import settings
+
 
 class IndexView(TemplateView):
     template_name = "index.html"

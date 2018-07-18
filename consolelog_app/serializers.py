@@ -6,3 +6,8 @@ class TimestampSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = Timestamp
+
+class GameSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = Game
