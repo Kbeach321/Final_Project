@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from consolelog_app.views import IndexView
+from consolelog_app.views import IndexView, TimestampListCreateAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", IndexView.as_view()),
+    path('', IndexView.as_view()),
     path('auth/', include("djoser.urls")),
     path('auth/', include("djoser.urls.authtoken")),
+    path('timestamps/', TimestampListCreateAPIView.as_view())
 ]
