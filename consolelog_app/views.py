@@ -15,12 +15,3 @@ class IndexView(TemplateView):
 class TimestampListCreateAPIView(generics.ListCreateAPIView):
     queryset = Timestamp.objects.all()
     serializer_class = TimestampSerializer
-
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect()
-    else:
-        pass

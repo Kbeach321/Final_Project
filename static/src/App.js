@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Layout from './components/Layout/Layout.js';
+import Header from './components/Layout/Header.js';
+import Footer from './components/Layout/Footer.js';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Layout/>
+        <Header/>
+        <Footer/>
       </div>
     );
   }
