@@ -17,17 +17,3 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=250, default='')
     age = models.IntegerField()
     location = models.CharField(max_length=100, default='')
-
-
-
-
-
-
-
-
-
-# def create_profile(sender, **kwargs):
-#     if kwargs['created']:
-#         user_profile = UserProfile.objects.create(user=kwargs['instance'])
-
-# post_save.connect(create_profile, sender=User)

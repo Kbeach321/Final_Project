@@ -5,7 +5,6 @@ class Header extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -16,7 +15,7 @@ class Header extends Component {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Games</a>
@@ -28,14 +27,13 @@ class Header extends Component {
               <a class="nav-link" href="#">Profile</a>
             </li>
           </ul>
-          <ul class= "nav navbar-nav navbar-right">
+          <ul class= "nav navbar-nav justify-content-end">
             <li className="nav-item">
               <a href="#" className="nav-link">Log-in</a>
             </li>
           </ul>
         </div>
       </nav>
-
     );
   }
 }
