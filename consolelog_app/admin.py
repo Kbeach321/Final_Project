@@ -1,3 +1,6 @@
 from django.contrib import admin
+from consolelog_app.models import User, UserProfile
 
-# Register your models here.
+myModels = [User, UserProfile]
+
+admin.site.register(myModels)
