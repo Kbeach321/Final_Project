@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'static/build')
 
 
 # Quick-start development settings - unsuitable for production
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'consolelog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,7 +138,13 @@ REST_FRAMEWORK = {
     ),
 }
 
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, "static"),
+  os.path.join(BASE_DIR, "static/build"),
+  os.path.join(BASE_DIR, "static/build/static"),
+]
+
 VARIABLE_NAME=os.environ.get("API_KEY")
 
-import django_heroku
+
 django_heroku.settings(locals())
