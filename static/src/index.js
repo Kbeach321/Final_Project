@@ -10,13 +10,14 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import BaseLayout from './components/Layout/BaseLayout.js';
 import Home from './components/Home/Home.js'
-
+import Games from './components/Games/Games.js'
 
 ReactDOM.render(
   <BrowserRouter>
       <BaseLayout>
         <Switch>
           <Route path='' component={Home}/>
+          {/* <Route path='/Games/' component={Games}/> */}
         </Switch>
       </BaseLayout>
   </BrowserRouter>,

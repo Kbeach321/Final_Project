@@ -1,12 +1,85 @@
+imprt
+img {
+  width: 100%; }
+
 .text-center {
   text-align: center;
-  width: 80%;
   align-content: center; }
 
-h1 {
-  font-size: 2.4rem; }
+.center {
+  font-size: 2.4rem;
+  text-align: center; }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.6rem;
-    text-align: center; } }
+.image_div {
+  width: 50%;
+  align-content: left;
+  max-width: 300px;
+  float: left;
+  margin: 10px 30px;}
+
+.image_div2 {
+  width: 50%;
+  align-content: left;
+  max-width: 300px;
+  float: right;
+  margin: 10px 30px;}
+
+.descript-text {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.support-text {
+  text-align: center; }
+
+.btn-primary {
+  margin-right: 10px; }
+
+.center-image {
+  text-align: center; }
+
+.card {
+  border: unset;
+  /* background-image: url("./../Images/login-in-screen.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%; */
+  background-color: #ffff;
+  opacity: 100%;
+ }
+
+ /* .background-image{
+   background-color: blue;
+   background-image: url("./../Images/login-in-screen.jpg");
+   background-repeat: no-repeat;
+   background-size: 100%;
+ } */
+
+@media (max-width: 1171px) {
+  .image_div {
+    float: none;
+    display: inline-block;
+    align-content: center; }
+  .image_div2 {
+    float: none;
+    display: none;
+  }
+  .descript-text {
+    text-align: center;
+    }
+}
+
+@media (max-width: 490px) {
+  .center {
+    font-size: 1.1rem;
+    text-align: center; }
+  .image_div {
+    width: 100%;
+    align-content: center; }
+  .image_div2 {
+    display: none;
+    float: none; }
+  .descript-text{
+    font-size: 1rem;
+    }
+  }

@@ -5,6 +5,9 @@
   flex-grow: 1;
   text-align: right; }
 
+.nav-color {
+  background-color: #D3D3D3; }
+
 @media (max-width: 575px) {
   .login_li {
     text-align: left; } }

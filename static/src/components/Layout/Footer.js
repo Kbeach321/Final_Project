@@ -8,7 +8,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer className="foot page-footer font-small blue">
+      <footer className=" page-footer font-small footer-color">
         <div className="footer-copyright text-center py-3">© 2018 Copyright  </div>
       </footer>
     );
