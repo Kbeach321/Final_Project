@@ -1,0 +1,10 @@
+.login_ul {
+  width: 100%; }
+
+.login_li {
+  flex-grow: 1;
+  text-align: right; }
+
+@media (max-width: 575px) {
+  .login_li {
+    text-align: left; } }

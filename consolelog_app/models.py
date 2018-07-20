@@ -17,3 +17,6 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=250, default='')
     age = models.IntegerField()
     location = models.CharField(max_length=100, default='')
+
+class Games(models.Model):
+    pass

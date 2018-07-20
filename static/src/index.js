@@ -6,6 +6,19 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import BaseLayout from './components/Layout/BaseLayout.js';
+import Home from './components/Home/Home.js'
+
+
+ReactDOM.render(
+  <BrowserRouter>
+      <BaseLayout>
+        <Switch>
+          <Route path='' component={Home}/>
+        </Switch>
+      </BaseLayout>
+  </BrowserRouter>,
+ document.getElementById('root'));
 registerServiceWorker();
