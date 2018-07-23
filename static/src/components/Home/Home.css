@@ -13,22 +13,17 @@ img {
 .image_div {
   width: 50%;
   align-content: left;
-  max-width: 300px;
-  float: left;
-  margin: 10px 30px;}
+  max-width: 400px;
+  float: left; }
 
 .image_div2 {
   width: 50%;
   align-content: left;
-  max-width: 300px;
-  float: right;
-  margin: 10px 30px;}
+  max-width: 400px;
+  float: right; }
 
 .descript-text {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
+  text-align: center; }
 
 .support-text {
   text-align: center; }
@@ -40,20 +35,7 @@ img {
   text-align: center; }
 
 .card {
-  border: unset;
-  /* background-image: url("./../Images/login-in-screen.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%; */
-  background-color: #ffff;
-  opacity: 100%;
- }
-
- /* .background-image{
-   background-color: blue;
-   background-image: url("./../Images/login-in-screen.jpg");
-   background-repeat: no-repeat;
-   background-size: 100%;
- } */
+  border: unset; }
 
 @media (max-width: 1171px) {
   .image_div {
@@ -62,24 +44,18 @@ img {
     align-content: center; }
   .image_div2 {
     float: none;
-    display: none;
-  }
+    display: inline-block;
+    align-content: center; }
   .descript-text {
-    text-align: center;
-    }
-}
+    text-align: center; } }
 
 @media (max-width: 490px) {
   .center {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     text-align: center; }
   .image_div {
     width: 100%;
     align-content: center; }
   .image_div2 {
     display: none;
-    float: none; }
-  .descript-text{
-    font-size: 1rem;
-    }
-  }
+    float: none; } }

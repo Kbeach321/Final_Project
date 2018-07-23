@@ -16,10 +16,10 @@ class Header extends Component {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">Home </a>
+              <a className="nav-link" href="/">Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/Games">Games</a>
+              <a className="nav-link" href="/games">Games</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/Users">Users</a>

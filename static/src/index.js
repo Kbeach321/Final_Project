@@ -17,7 +17,7 @@ ReactDOM.render(
       <BaseLayout>
         <Switch>
           <Route path='' component={Home}/>
-          {/* <Route path='/Games/' component={Games}/> */}
+          <Route path='/games' component={Games}/>
         </Switch>
       </BaseLayout>
   </BrowserRouter>,

@@ -14,9 +14,14 @@ class Timestamp(models.Model):
 
 class UserProfile(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE,)
+    # first_name = models.CharField(max_length='20', default='')
+    # last_name = models.CharField(max_length='20', default='')
     bio = models.CharField(max_length=250, default='')
     age = models.IntegerField()
     location = models.CharField(max_length=100, default='')
 
 class Games(models.Model):
-    pass
+    users = models.ManyToManyField(User)
+    name = models.CharField(max_length=100, default='')
+    cover = models.FileField(upload_to = 'covers')
+    platform = models.CharField(max_length=20, default = '')
