@@ -13,3 +13,11 @@
 .games_shell {
   background-color: lightblue;
   background-size: cover; }
+
+@media (max-width: 1000px) {
+  .submit_search {
+    margin-top: 5px !important; } }
+
+@media (max-width: 700px) {
+  .search_menu {
+    display: none; } }

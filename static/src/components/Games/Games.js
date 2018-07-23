@@ -9,74 +9,77 @@ class Games extends Component {
 
   render() {
     return (
-      <container className='games_shell'>
-        <div class="row shell">
-          <div class="col-3 search_menu">
+      <div className='container-fluid games_shell'>
+        <div className="row shell">
+          <div className="col-4 search_menu">
             Search Options
-            <div class="col-12">
-              Search Bar [TBD]
+            <div className="col-12">
+              <form className="form-inline ">
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                <button className="btn btn-outline-success my-2 my-sm-0 submit_search" type="submit">Search</button>
+              </form>
             </div>
             <div className="search_platform col-12">
               <span>Filter by Console</span>
               {/* Filter By CheckBoxes -- Nintendo GameBoy */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">GameBoy</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">GameBoy</label>
               </div>
               {/* Filter By CheckBoxes -- Nintendo GameBoy Color */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">GameBoy Color</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">GameBoy Color</label>
               </div>
               {/* Filter By CheckBoxes -- Nintendo GameBoy Advanced */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">GameBoy Advanced</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">GameBoy Advanced</label>
               </div>
               {/* Filter By CheckBoxes -- Super Nintendo Entertainment System (SNES) */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Super Nintendo Entertainment System (SNES)</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Super Nintendo Entertainment System (SNES)</label>
               </div>
               {/* Filter By CheckBoxes -- Nintendo 64 */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Nintendo 64</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Nintendo 64</label>
               </div>
               {/* Filter By CheckBoxes -- Nintendo Gamecube */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Nintendo Gamecube</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Nintendo Gamecube</label>
               </div>
               {/* Filter By CheckBoxes -- Sega Saturn */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Sega Saturn</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Sega Saturn</label>
               </div>
               {/* Filter By CheckBoxes -- Sega Dreamcast */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Sega Dreamcast</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Sega Dreamcast</label>
               </div>
               {/* Filter By CheckBoxes -- Playstation */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Playstation</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Playstation</label>
               </div>
               {/* Filter By CheckBoxes -- Nintendo Gamecube */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Playstation 2</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Playstation 2</label>
               </div>
               {/* Filter By CheckBoxes -- Xbox */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Xbox</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Xbox</label>
               </div>
               {/* Filter By CheckBoxes -- Xbox 360 */}
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"></input>
-                <label class="custom-control-label" for="defaultUnchecked">Xbox 360</label>
+              <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input"></input>
+                <label className="custom-control-label" htmlFor="defaultUnchecked">Xbox 360</label>
               </div>
             </div>
           </div>
@@ -86,7 +89,7 @@ class Games extends Component {
             </div>
           </div>
         </div>
-      </container>
+      </div>
     );
   }
 }

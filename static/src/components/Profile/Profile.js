@@ -9,7 +9,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <container>
+      <div className="container">
         <div className="row">
           <div className="col-3 profile_picture">
             Profile_Picture_PlaceHolder
@@ -23,7 +23,7 @@ class Profile extends Component {
             <span> Games Owned </span>
           </div>
         </div>
-      </container>
+      </div>
     );
   }
 }

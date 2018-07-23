@@ -44,14 +44,31 @@ img {
 }
 
 .card {
+  position: relative;
+  // z-index: 20;
   border: unset;
-  opacity: .9;
-  background-color: black;
+  background-color: inherit;
+  color: #ffff;
 }
 
 .background-image {
-  background: url('./../Images/login-screen.jpg') no-repeat;
-  background-size: cover;
+  position: relative;
+  background: url('./../Images/login-screen.jpg') no-repeat center center/cover;
+  // background-size: cover;
+  height: 100vh;
+  // z-index: 10;
+}
+
+.background-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .9;
+  background-color: black;
+  // z-index: 10;
 }
 
 
