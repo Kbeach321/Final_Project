@@ -13,6 +13,8 @@ import Home from './components/Home/Home.js'
 import Games from './components/Games/Games.js'
 import Users from './components/Users/Users.js'
 import Profile from './components/Profile/Profile.js'
+import Registration from './components/Registration/Registration.js'
+import Login from './components/Log-in/Log-in.js'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -21,6 +23,8 @@ ReactDOM.render(
           <Route path='/games' component={Games}/>
           <Route path='/users' component={Users}/>
           <Route path='/profile' component={Profile}/>
+          <Route path='/registration' component={Registration}/>
+          <Route path='/login' component={Login}/>
           <Route exact path='/' component={Home}/>
         </Switch>
       </BaseLayout>

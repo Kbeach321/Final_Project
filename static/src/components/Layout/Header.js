@@ -22,15 +22,15 @@ class Header extends Component {
               <a className="nav-link" href="/games">Games</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/Users">Users</a>
+              <a className="nav-link" href="/users">Users</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/Profile">Profile</a>
+              <a className="nav-link" href="/profile">Profile</a>
             </li>
           </ul>
           <ul className= "nav navbar-nav login_ul">
             <li className="nav-item login_li">
-              <a href="#" className="nav-link">Log-in</a>
+              <a href="/login" className="nav-link">Log-in</a>
             </li>
           </ul>
         </div>

@@ -30,7 +30,7 @@ class Home extends Component {
               Currently supporing the following consoles: Game Boy, Game Boy Color, Game Boy Advanced, Super Nintendo Entertainment System (SNES), Nintendo 64, Nintendo Gamecube, Xbox, Xbox 360, Sega Saturn, Sega Dreamcast, Playstation, and Playstation 2.</p>
             <div className="center">
               <a href="/Registration" className="btn btn-primary">Register New Account</a>
-              <a href="/Log-in" className="btn btn-success">Log-in Here</a>
+              <a href="/Login" className="btn btn-success">Log-in Here</a>
             </div>
           </div>
         </div>

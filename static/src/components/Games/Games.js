@@ -82,7 +82,7 @@ class Games extends Component {
           </div>
           <div>
             <div className="games_display col-12">
-              Display Games here
+              <span>Display Games here</span>
             </div>
           </div>
         </div>

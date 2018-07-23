@@ -13,13 +13,15 @@ img {
   width: 50%;
   align-content: left;
   max-width: 400px;
-  float: left; }
+  float: left;
+  margin: 10px; }
 
 .image_div2 {
   width: 50%;
   align-content: left;
   max-width: 400px;
-  float: right; }
+  float: right;
+  margin: 10px; }
 
 .descript-text {
   text-align: center; }
@@ -35,7 +37,8 @@ img {
 
 .card {
   border: unset;
-  opacity: 1%; }
+  opacity: .9;
+  background-color: black; }
 
 .background-image {
   background: url("./../Images/login-screen.jpg") no-repeat;
@@ -47,9 +50,7 @@ img {
     display: inline-block;
     align-content: center; }
   .image_div2 {
-    float: none;
-    display: inline-block;
-    align-content: center; }
+    display: none; }
   .descript-text {
     text-align: center; } }
 
@@ -58,8 +59,5 @@ img {
     font-size: 1.6rem;
     text-align: center; }
   .image_div {
-    width: 100%;
-    align-content: center; }
-  .image_div2 {
-    display: none;
-    float: none; } }
+    width: 80%;
+    align-content: center; } }

@@ -9,9 +9,15 @@ class Users extends Component {
 
   render() {
     return (
-      <div>
-        Users Page
+    <container>
+      
+      <div className='searchbar'>
+        Search Bar
       </div>
+      <div>
+        Content
+      </div>
+    </container>
     );
   }
 }
