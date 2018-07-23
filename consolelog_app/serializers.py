@@ -13,3 +13,9 @@ class GamesSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = Games
+
+class UsersSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = '__all__'
+        model = User

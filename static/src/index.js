@@ -11,13 +11,17 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import BaseLayout from './components/Layout/BaseLayout.js';
 import Home from './components/Home/Home.js'
 import Games from './components/Games/Games.js'
+import Users from './components/Users/Users.js'
+import Profile from './components/Profile/Profile.js'
 
 ReactDOM.render(
   <BrowserRouter>
       <BaseLayout>
         <Switch>
-          <Route path='' component={Home}/>
           <Route path='/games' component={Games}/>
+          <Route path='/users' component={Users}/>
+          <Route path='/profile' component={Profile}/>
+          <Route exact path='/' component={Home}/>
         </Switch>
       </BaseLayout>
   </BrowserRouter>,

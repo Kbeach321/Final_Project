@@ -1,4 +1,3 @@
-imprt
 img {
   width: 100%; }
 
@@ -35,7 +34,12 @@ img {
   text-align: center; }
 
 .card {
-  border: unset; }
+  border: unset;
+  opacity: 1%; }
+
+.background-image {
+  background: url("./../Images/login-screen.jpg") no-repeat;
+  background-size: cover; }
 
 @media (max-width: 1171px) {
   .image_div {

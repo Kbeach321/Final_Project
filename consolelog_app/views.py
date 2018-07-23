@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 
 from rest_framework import generics
 from consolelog_app.models import Timestamp, Games
-from consolelog_app.serializers import TimestampSerializer, GamesSerializer
+from consolelog_app.serializers import TimestampSerializer, GamesSerializer,
+                                    UsersSerializer
 
 
 ############### API_KEY ##########################
@@ -20,3 +21,7 @@ class TimestampListCreateAPIView(generics.ListCreateAPIView):
 class GamesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Games.objects.all()
     serializer_class = GamesSerializer
+
+class UsersListCreateAPIView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UsersSerializer

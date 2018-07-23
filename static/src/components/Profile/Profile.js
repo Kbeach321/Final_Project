@@ -8,6 +8,12 @@ class Profile extends Component {
   }
 
   render() {
-    return ();
+    return (
+      <div>
+        Profile Page
+      </div>
+    );
+  }
+}
 
 export default Profile;
