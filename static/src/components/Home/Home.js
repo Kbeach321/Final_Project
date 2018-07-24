@@ -16,7 +16,6 @@ class Home extends Component {
             <h1 className="card-title welcome center">
               Welcome to Console.Log
             </h1>
-            {/* <h5 className="card-title">Your one stop site to log your retro video games!</h5> */}
             <div className="center-image">
               <div className="image_div">
                 <img src={controllerImage} alt="SNES CONTROLLER ILLUSTRATION"/>

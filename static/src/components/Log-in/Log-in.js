@@ -6,7 +6,6 @@ class Login extends Component {
   constructor(props) {
     super(props);
   }
-
   _login(event) {
    event.preventDefault();
 

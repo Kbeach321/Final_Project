@@ -45,7 +45,6 @@ img {
 
 .card {
   position: relative;
-  // z-index: 20;
   border: unset;
   background-color: inherit;
   color: #ffff;
@@ -54,9 +53,7 @@ img {
 .background-image {
   position: relative;
   background: url('./../Images/login-screen.jpg') no-repeat center center/cover;
-  // background-size: cover;
   height: 100vh;
-  // z-index: 10;
 }
 
 .register{
@@ -76,7 +73,6 @@ img {
   right: 0;
   opacity: .9;
   background-color: black;
-  // z-index: 10;
 }
 
 

@@ -10,8 +10,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="profile-background-image"></div>
+      <div className="container-fluid">
         <div className="row">
           <div className="media">
             <img className="profile_picture" src={default_profile} alt="Generic placeholder image"></img>

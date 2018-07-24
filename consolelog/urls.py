@@ -24,5 +24,7 @@ urlpatterns = [
     path('auth/', include("djoser.urls")),
     path('auth/', include("djoser.urls.authtoken")),
     path('games/', GamesListCreateAPIView.as_view(), name='games'),
-    path('users/', UsersListCreateAPIView.as_view(), name='users')
+    path('games/<pk:id>/', GamesListCreateAPIView.as_view(), name='games-id'),
+    path('users/', UsersListCreateAPIView.as_view(), name='users'),
+    path('users/<pk:id>/', UsersListCreateAPIView.as_view(), name='users-id')
 ]
