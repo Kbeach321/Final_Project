@@ -46,6 +46,12 @@ img {
   background: url("./../Images/login-screen.jpg") no-repeat center center/cover;
   height: 100vh; }
 
+.register {
+  margin: 10px; }
+
+.login {
+  margin: 10px; }
+
 .background-image::before {
   content: '';
   position: absolute;

@@ -1,5 +1,14 @@
-.sign-in {
-  margin-left: 10px; }
-
 .form-row {
   margin-bottom: 1rem; }
+
+.btn-primary {
+  margin-right: 0px; }
+
+.newuser {
+  margin: 0 5px; }
+
+@media (max-width: 786px) {
+  .buttonshell {
+    text-align: center; }
+  .reg_form {
+    text-align: center; } }

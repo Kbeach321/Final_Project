@@ -1,25 +1,22 @@
 from rest_framework import serializers
-from consolelog_app.models import Timestamp, Games, User
+from consolelog_app.models import Games, User, UserProfile
 
-# TimeStampSerializer
-class TimestampSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        fields = "__all__"
-        model = Timestamp
-
-# GamesSerializer
+# GamesSerializer Shows all the Games
 class GamesSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = "__all__"
+        fields = ["name", "cover", "platform", "users"]
         model = Games
 
-# UsersSerializer --> redirect to UserProfiles??? Return Image???
+# UsersSerializer --> #Returns profile_picture from Profile, to render to Users!
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ["profile_picture"]
 class UsersSerializer(serializers.ModelSerializer):
 
+    profile = UserProfileSerializer()
     class Meta:
-        # Test #
-        # fields = "__all__"
-        fields = ["userprofile_set"]
+
+        fields = ["username","profile"]
         model = User

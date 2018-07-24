@@ -1,0 +1,15 @@
+.current_users{
+  display: inline-block;
+  font-size: 2rem;
+  margin-right: 30px;
+}
+.searchbar_right{
+  // justify-content: flex-end;
+  // Display Right Side
+}
+
+@media(max-width:576px){
+  .searchbar_right{
+// Drop to new line //
+  }
+}

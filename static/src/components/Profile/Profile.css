@@ -1,0 +1,32 @@
+.profile_picture {
+  width: 180px;
+  height: 180px;
+  border: solid 1px;
+  margin-top: 50px; }
+
+.media-body {
+  margin-top: 50px;
+  margin-left: 40px; }
+
+.games_log {
+  margin-top: 20px; }
+
+.upload_btn {
+  display: block;
+  margin: 110px 5px 5px 5px; }
+
+.bio_btn {
+  display: block;
+  margin: 5px 5px 5px 2px; }
+
+.buttondiv {
+  margin-left: 10px; }
+
+@media (max-width: 768px) {
+  .bio-info {
+    display: block; }
+  .media {
+    width: 100%;
+    justify-content: center; }
+  .media-body {
+    margin-left: 0px; } }

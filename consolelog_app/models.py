@@ -8,16 +8,11 @@ from django.conf import settings
 class User(AbstractUser):
     pass
 
-#  Timestamp
-class Timestamp(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-
 #  UserProfile Displays Users informatin (UNIQUE TO LOGGED IN USER)
 class UserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
+    user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE,)
     bio = models.CharField(max_length=250, blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
-    location = models.CharField(max_length=100, blank=True, null=True)
     profile_picture = models.FileField(upload_to = 'profile_image', blank=True, null=True)
 
 # Games --> Multipule Users for each game

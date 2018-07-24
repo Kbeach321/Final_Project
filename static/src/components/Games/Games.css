@@ -3,21 +3,36 @@
   background-color: blue; }
 
 .search_menu {
-  background-color: red;
-  height: 100%; }
+  background-color: #282C35;
+  height: 100%;
+  color: #ffff; }
 
 .games_display {
-  background-color: yellow;
+  background-color: #989898;
   height: 100%; }
 
 .games_shell {
   background-color: lightblue;
-  background-size: cover; }
+  background-size: cover;
+  height: 100vh; }
 
-@media (max-width: 1000px) {
+.search {
+  font-style: italic; }
+
+.filter {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-style: italic; }
+
+.searchbar {
+  margin-top: 20px; }
+
+@media (max-width: 1028px) {
   .submit_search {
     margin-top: 5px !important; } }
 
 @media (max-width: 700px) {
   .search_menu {
-    display: none; } }
+    display: none; }
+  .find_games {
+    text-align: center; } }
