@@ -20,6 +20,6 @@ class UsersSerializer(serializers.ModelSerializer):
 
     class Meta:
         # Test #
-        fields = "__all__"
-        # fields = ["username"]
+        # fields = "__all__"
+        fields = ["userprofile_set"]
         model = User

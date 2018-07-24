@@ -25,5 +25,5 @@ class GamesListCreateAPIView(generics.ListCreateAPIView):
 
 # Users List Display
 class UsersListCreateAPIView(generics.ListCreateAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.select_related('userprofile').all()
     serializer_class = UsersSerializer

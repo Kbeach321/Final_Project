@@ -14,13 +14,11 @@ class Timestamp(models.Model):
 
 #  UserProfile Displays Users informatin (UNIQUE TO LOGGED IN USER)
 class UserProfile(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE,)
-    # first_name = models.CharField(max_length='20', default='')
-    # last_name = models.CharField(max_length='20', default='')
-    bio = models.CharField(max_length=250, default='')
-    age = models.IntegerField()
-    location = models.CharField(max_length=100, default='')
-    profile_picture = models.FileField(upload_to = 'profile_image')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
+    bio = models.CharField(max_length=250, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
+    profile_picture = models.FileField(upload_to = 'profile_image', blank=True, null=True)
 
 # Games --> Multipule Users for each game
 class Games(models.Model):
@@ -28,7 +26,3 @@ class Games(models.Model):
     name = models.CharField(max_length=100, default='')
     cover = models.FileField(upload_to = 'covers')
     platform = models.CharField(max_length=20, default = '')
-
-# # Gathers List of all Users
-# class Users(models.Model):
-#     pass

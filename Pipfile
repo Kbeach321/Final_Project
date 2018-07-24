@@ -11,6 +11,7 @@ gunicorn = "*"
 "psycopg2-binary" = "*"
 django-heroku = "*"
 django-cors-headers = "*"
+pillow = "==5.0.0"
 
 [dev-packages]
 
