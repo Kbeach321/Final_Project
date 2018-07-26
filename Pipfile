@@ -12,6 +12,8 @@ gunicorn = "*"
 django-heroku = "*"
 django-cors-headers = "*"
 pillow = "==5.0.0"
+requests = "*"
+igdb-api-python = "*"
 
 [dev-packages]
 

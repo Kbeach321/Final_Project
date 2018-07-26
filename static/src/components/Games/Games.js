@@ -1,13 +1,46 @@
 import React, {Component} from 'react';
-
 import './Games.css';
+
 
 class Games extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+
+    }
+
+    this._getSearchResults = this._getSearchResults.bind(this);
+  }
+
+  _getSearchResults(searchParams) {
+   let self = this;
+
+   searchParams = searchParams || {
+     cover: '*',
+     title: '*',
+     platform: '*'
+   }
+
+   fetch(`http://localhost:8000/proxy/games/?cover=${searchParams.cover}&title=${searchParams.title}&platforms=${searchParams.platform}`)
+   .then(function(response){
+     if(!response.ok){
+       throw Error(response.statusText);
+     }
+     console.log(response)
+     return response.json()
+   })
+   .then(function(responseJSON){
+     console.log('response', responseJSON)
+     self.setState({album: responseJSON.album});
+   })
+   .catch(function(error){
+     console.log('Looks like there was a problem: \n', error);
+   });
   }
 
   render() {
+    this._getSearchResults();
     return (
       <div className='container-fluid games_shell'>
         <div className="row shell">

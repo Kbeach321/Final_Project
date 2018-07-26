@@ -3,7 +3,6 @@ from consolelog_app.models import Games, User, UserProfile
 
 # GamesSerializer Shows all the Games
 class GamesSerializer(serializers.ModelSerializer):
-
     class Meta:
         fields = ["name", "cover", "platform", "users"]
         model = Games
@@ -14,9 +13,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = ["profile_picture"]
 class UsersSerializer(serializers.ModelSerializer):
-
     profile = UserProfileSerializer()
     class Meta:
-
         fields = ["username","profile"]
+        model = User
+
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ["username", "password"]
         model = User

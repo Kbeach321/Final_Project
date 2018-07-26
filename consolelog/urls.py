@@ -16,15 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView
+from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
+                                GamesProxyView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('auth/', include("djoser.urls")),
     path('auth/', include("djoser.urls.authtoken")),
-    path('games/', GamesListCreateAPIView.as_view(), name='games'),
-    path('games/<pk:id>/', GamesListCreateAPIView.as_view(), name='games-id'),
+    path('proxy/games/', GamesProxyView.as_view(), name='games'),
+    path('games/<int:pk>/', GamesListCreateAPIView.as_view(), name='games-id'),
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
-    path('users/<pk:id>/', UsersListCreateAPIView.as_view(), name='users-id')
+    path('users/<int:pk>/', UsersListCreateAPIView.as_view(), name='users-id'),
 ]

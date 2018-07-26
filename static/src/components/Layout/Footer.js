@@ -9,7 +9,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className=" page-footer font-small footer-color">
-        <div className="footer-copyright text-center py-3">© 2018 Copyright  </div>
+        <div className="footer-copyright text-center py-3">© 2018 Copyright, Game data provided by IGDB.com  </div>
       </footer>
     );
   }

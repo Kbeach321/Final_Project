@@ -1,9 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-
+import requests
 from rest_framework import generics
+from rest_framework.views import APIView
 from consolelog_app.models import Games, User
-from consolelog_app.serializers import GamesSerializer, UsersSerializer
+from consolelog_app.serializers import GamesSerializer, UsersSerializer, LoginSerializer
+from rest_framework.response import Response
+
+from igdb_api_python.igdb import igdb as igdb
+
+#ENTER YOUR KEY HERE
+igdb = igdb("857a9df19e79338f5a1f9d88bb6a5a4b")
 
 
 ############### API_KEY ##########################
@@ -22,3 +29,22 @@ class GamesListCreateAPIView(generics.ListCreateAPIView):
 class UsersListCreateAPIView(generics.ListCreateAPIView):
     queryset = User.objects.select_related('profile').all()
     serializer_class = UsersSerializer
+
+
+################## TESTING ###############################
+
+
+class GamesProxyView(APIView):
+    def get(self,request):
+        result = igdb.platforms({
+            'ids':['33','22','24','19','4','21','7','8','32','23','11','12'],
+            'fields' : ['games']
+        })
+
+        # api_url = "https://api-endpoint.igdb.com/games/"
+        # title = request.GET.get('title')
+        # platform = request.GET.get('platforms')
+        # cover = request.GET.get('cover')
+        # games_data = requests.get(f'{api_url}/games/?fields=name,platforms,cover,{headers}')
+        # games_data = requests.get(api_url, headers)
+        return Response(result)

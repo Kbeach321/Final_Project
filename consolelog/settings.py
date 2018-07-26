@@ -146,5 +146,4 @@ STATICFILES_DIRS = [
 
 VARIABLE_NAME=os.environ.get("API_KEY")
 
-
 django_heroku.settings(locals())
