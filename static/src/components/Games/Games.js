@@ -7,22 +7,16 @@ class Games extends Component {
     super(props);
 
     this.state = {
-
+      games : []
     }
 
-    this._getSearchResults = this._getSearchResults.bind(this);
+    // this._getSearchResults = this._getSearchResults.bind(this);
   }
 
-  _getSearchResults(searchParams) {
+  componentDidMount() {
    let self = this;
 
-   searchParams = searchParams || {
-     cover: '*',
-     title: '*',
-     platform: '*'
-   }
-
-   fetch(`http://localhost:8000/proxy/games/?cover=${searchParams.cover}&title=${searchParams.title}&platforms=${searchParams.platform}`)
+   fetch(`http://localhost:8000/proxy/games/`)
    .then(function(response){
      if(!response.ok){
        throw Error(response.statusText);
@@ -32,7 +26,7 @@ class Games extends Component {
    })
    .then(function(responseJSON){
      console.log('response', responseJSON)
-     self.setState({album: responseJSON.album});
+     self.setState({games: responseJSON});
    })
    .catch(function(error){
      console.log('Looks like there was a problem: \n', error);
@@ -40,71 +34,62 @@ class Games extends Component {
   }
 
   render() {
-    this._getSearchResults();
+    console.log('state', this.state.games);
     return (
       <div className='container-fluid games_shell'>
         <div className="row shell">
           <div className="col-4 search_menu">
             <div className="search_platform col-12">
               <p className= 'filter'>Filter by Console</p>
+              <div class="form-check">
               {/* Filter By CheckBoxes -- Nintendo GameBoy */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Gameboy</label>
-              </div>
-              {/* Filter By CheckBoxes -- Nintendo GameBoy Color */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboycolor" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Gameboy Color</label>              </div>
-              {/* Filter By CheckBoxes -- Nintendo GameBoy Advanced */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">GameBoy Advanced</label>
-              </div>
-              {/* Filter By CheckBoxes -- Super Nintendo Entertainment System (SNES) */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Super Nintendo Entertainment System (SNES)</label>
-              </div>
-              {/* Filter By CheckBoxes -- Nintendo 64 */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Nintendo 64</label>
-              </div>
-              {/* Filter By CheckBoxes -- Nintendo Gamecube */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Gamecube</label>
-              </div>
-              {/* Filter By CheckBoxes -- Playstation */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Playstation</label>
-              </div>
-              {/* Filter By CheckBoxes -- Playstation 2 */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Playstation 2</label>
-              </div>
-              {/* Filter By CheckBoxes -- Sega Saturn */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Sega Saturn</label>
-              </div>
-              {/* Filter By CheckBoxes -- Sega Dreamcast */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Sega Dreamcast</label>
-              </div>
-              {/* Filter By CheckBoxes -- Xbox */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Xbox</label>
-              </div>
-              {/* Filter By CheckBoxes -- Xbox 360 */}
-              <div className="custom-control custom-checkbox">
-                <input className="form-check-input" type="checkbox" value="gameboy" id="defaultCheck1"/>
-                <label className="form-check-label" for="defaultCheck1">Xbox 360</label>
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Gameboy </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Nintendo GameBoy Color */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Gameboy Color </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Nintendo GameBoy Advanced */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Gameboy Advanced </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Super Nintendo Entertainment System (SNES) */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Super Nintendo Entertainment System (SNES)</label>
+                <br/>
+                {/* Filter By CheckBoxes -- Nintendo 64 */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Nintendo 64 </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Nintendo Gamecube */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Nintendo Gamecube </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Playstation */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Playstation </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Playstation 2 */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Playstation 2 </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Sega Saturn */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Sega Saturn </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Sega Dreamcast */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Sega Dreamcast </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Xbox */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Xbox </label>
+                <br/>
+                {/* Filter By CheckBoxes -- Xbox 360 */}
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                <label class="form-check-label" for="exampleRadios1"> Xbox 360 </label>
+                <br/>
               </div>
             </div>
             <div className="searchbar col-12">
@@ -116,7 +101,7 @@ class Games extends Component {
           </div>
           <div className="games_display col col-md-8">
             <h1 className="find_games"> Find/Add Games </h1>
-            <span>Display Games here Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo corporis nobis animi quod facere dolores laborum consequatur laudantium. Itaque in voluptatibus dolorum aliquam consectetur fugiat repellendus laborum quae voluptatum delectus!</span>
+            {/* DISPLAY GAMES HERE */}
           </div>
         </div>
       </div>

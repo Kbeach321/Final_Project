@@ -25,10 +25,6 @@ class Registration extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label for="exampleAge1">Age</label>
-                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-                </div>
-                <div className="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
                 </div>

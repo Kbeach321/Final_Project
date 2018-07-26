@@ -12,8 +12,7 @@ class User(AbstractUser):
 class UserProfile(models.Model):
     user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE,)
     bio = models.CharField(max_length=250, blank=True, null=True)
-    age = models.IntegerField(blank=True, null=True)
-    profile_picture = models.FileField(upload_to = 'profile_image', blank=True, null=True)
+    profile_picture = models.FileField(upload_to = 'media/', blank=True, null=True)
 
 # Games --> Multipule Users for each game
 class Games(models.Model):

@@ -30,16 +30,28 @@ class UsersListCreateAPIView(generics.ListCreateAPIView):
     queryset = User.objects.select_related('profile').all()
     serializer_class = UsersSerializer
 
-
-################## TESTING ###############################
-
-
 class GamesProxyView(APIView):
     def get(self,request):
-        result = igdb.platforms({
-            'ids':['33','22','24','19','4','21','7','8','32','23','11','12'],
-            'fields' : ['games']
+        result = igdb.games({
+        'filters' :{
+            '[platforms][any]':33
+            # ['33','22','24','19','4','21','7','8','32','23','11','12']
+        },
+        'fields' : ['name', 'cover', 'platforms']
         })
+        return Response(result)
+
+
+
+
+
+################## TESTING ###############################
+############## GamesProxy Test Code ##################
+        # result = igdb.platforms({
+        #     'ids':["33", "22"],
+        #     'fields' : 'games',
+        #     'expand' : 'name'
+        # })
 
         # api_url = "https://api-endpoint.igdb.com/games/"
         # title = request.GET.get('title')
@@ -47,4 +59,3 @@ class GamesProxyView(APIView):
         # cover = request.GET.get('cover')
         # games_data = requests.get(f'{api_url}/games/?fields=name,platforms,cover,{headers}')
         # games_data = requests.get(api_url, headers)
-        return Response(result)

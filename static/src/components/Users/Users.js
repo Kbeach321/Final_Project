@@ -5,6 +5,29 @@ import './Users.css';
 class Users extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      users : []
+    }
+  }
+
+  componentDidMount() {
+   let self = this;
+
+   fetch(`http://localhost:8000/users/`)
+   .then(function(response){
+     if(!response.ok){
+       throw Error(response.statusText);
+     }
+     console.log(response)
+     return response.json()
+   })
+   .then(function(responseJSON){
+     console.log('response', responseJSON)
+     self.setState({users: responseJSON});
+   })
+   .catch(function(error){
+     console.log('Looks like there was a problem: \n', error);
+   });
   }
 
   render() {

@@ -42,14 +42,15 @@ class Login extends Component {
 //test the response
   .then(resJSON => {
     localStorage.setItem('auth_token', 'token' + resJSON.auth_token);
-    console.log('here');
+// Authenticate Login
     this.setState({authenticated: true});
+// Push to Profile Page -- When Login confirmed
     this.props.history.push('/profile')
     }
   )
   .catch(error => console.error('Error:', error));
-//store the auth token
  }
+ 
 // CLI //
   render() {
     return (
@@ -59,11 +60,11 @@ class Login extends Component {
             <h1 className='reg_form'> Log-in Form</h1>
         <form onSubmit={this._login}>
           <div className="form-group">
-            <label for="exampleInputUsername1">Username</label>
+            <label htmlFor="exampleInputUsername1">Username</label>
             <input type="Username" className="form-control" placeholder="Username" value={this.state.username} name='username' onChange={this._inputHandler} required/>
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label htmlFor="exampleInputPassword1">Password</label>
             <input type="password" className="form-control" placeholder="Password" value={this.state.password} name='password' onChange={this._inputHandler} required/>
           </div>
           <div className="buttonshell">

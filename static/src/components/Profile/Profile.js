@@ -21,8 +21,6 @@ class Profile extends Component {
           </div>
             <div className="col-12 align-self-center bio-info media-body">
               <h5> [Username]'s Bio</h5>
-              <p> Name: [First] + [Last] </p>
-              <p> Age: [Age] </p>
               <p> Descripton: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi numquam nulla reprehenderit temporibus rerum vel voluptatem consequatur id quaerat voluptates nam sequi consequuntur aliquam iste facilis at nostrum, magnam minima.
               </p>
             </div>

@@ -22,11 +22,17 @@ from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCre
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='index'),
     path('auth/', include("djoser.urls")),
     path('auth/', include("djoser.urls.authtoken")),
+    path('', IndexView.as_view(), name='index'),
+
+    
+
     path('proxy/games/', GamesProxyView.as_view(), name='games'),
     path('games/<int:pk>/', GamesListCreateAPIView.as_view(), name='games-id'),
+
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
     path('users/<int:pk>/', UsersListCreateAPIView.as_view(), name='users-id'),
+
+
 ]
