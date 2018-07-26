@@ -21,12 +21,17 @@ from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCre
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include("djoser.urls")),
-    path('auth/', include("djoser.urls.authtoken")),
     path('', IndexView.as_view(), name='index'),
 
-    
+    path('admin/', admin.site.urls),
+
+    # User Authentification -- Create / Delete User #
+    path('auth/', include("djoser.urls")),
+    path('auth/', include("djoser.urls.authtoken")),
+    # path('/auth/users/create/',  ),
+
+
+
 
     path('proxy/games/', GamesProxyView.as_view(), name='games'),
     path('games/<int:pk>/', GamesListCreateAPIView.as_view(), name='games-id'),

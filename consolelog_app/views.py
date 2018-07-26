@@ -6,29 +6,32 @@ from rest_framework.views import APIView
 from consolelog_app.models import Games, User
 from consolelog_app.serializers import GamesSerializer, UsersSerializer, LoginSerializer
 from rest_framework.response import Response
+from django.conf import settings
 
+###################### IGDB API ######################################
 from igdb_api_python.igdb import igdb as igdb
-
 #ENTER YOUR KEY HERE
 igdb = igdb("857a9df19e79338f5a1f9d88bb6a5a4b")
-
-
-############### API_KEY ##########################
-from django.conf import settings
 
 # IndexView
 class IndexView(TemplateView):
     template_name = "index.html"
+
+# class UserCreateAPIView(generics.):
+#     pass
+
+
+# Users List Display
+class UsersListCreateAPIView(generics.ListCreateAPIView):
+    queryset = User.objects.select_related('profile').all()
+    serializer_class = UsersSerializer
 
 # Games List Display
 class GamesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Games.objects.all()
     serializer_class = GamesSerializer
 
-# Users List Display
-class UsersListCreateAPIView(generics.ListCreateAPIView):
-    queryset = User.objects.select_related('profile').all()
-    serializer_class = UsersSerializer
+
 
 class GamesProxyView(APIView):
     def get(self,request):
@@ -40,8 +43,6 @@ class GamesProxyView(APIView):
         'fields' : ['name', 'cover', 'platforms']
         })
         return Response(result)
-
-
 
 
 

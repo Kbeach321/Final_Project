@@ -10,7 +10,7 @@ class Users extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(props) {
    let self = this;
 
    fetch(`http://localhost:8000/users/`)
@@ -31,22 +31,31 @@ class Users extends Component {
   }
 
   render() {
+      let users = this.state.users.map(function(user){
+        return(
+          <div>
+          <div>{user.username}</div>
+          <div>{user.profile.profile_image}</div>
+          </div>
+        )
+      })
     return (
     <div className="container-fluid">
       <div className='row searchbar'>
         <div className="col-12">
           <form className="form-inline ">
             <span className="current_users"> Find Users </span>
-            <div className="searchbar_right">
+
+            {/* <div className="searchbar_right">
               <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
               <button className="btn btn-outline-success my-2  submit_search" type="submit">Search</button>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
       <div className='row display_users'>
         <div className="col">
-          Users
+          {users}
         </div>
       </div>
     </div>

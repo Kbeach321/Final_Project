@@ -27,8 +27,7 @@ class Profile extends Component {
           </div>
         <div className="games_log row">
           <div className="col-12 align-self-center">
-            <span> [Games Owned] Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti officiis, obcaecati magnam recusandae repellat illo ullam explicabo, architecto minus sapiente pariatur repellendus ipsa maxime, dolorem blanditiis quae, debitis sit placeat.
-            <br></br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id harum, dicta magni rerum est repellat tenetur, saepe velit molestiae adipisci nemo cum cupiditate quisquam mollitia, labore. Molestiae quisquam laboriosam esse!</span>
+            <span> [Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned]</span>
           </div>
           </div>
         </div>
