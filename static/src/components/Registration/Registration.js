@@ -16,24 +16,24 @@ class Registration extends Component {
             <form>
                 <div className="form-row">
                   <div className="col">
-                    <label for="exampleInputFirstName1">First Name</label>
+                    <label htmlFor="exampleInputFirstName1">First Name</label>
                     <input type="text" className="form-control" placeholder="First name"></input>
                   </div>
                   <div className="col">
-                    <label for="exampleInputLastName1">Last Name</label>
+                    <label htmlFor="exampleInputLastName1">Last Name</label>
                     <input type="text" className="form-control" placeholder="Last name"></input>
                   </div>
                 </div>
                 <div className="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label htmlFor="exampleInputEmail1">Email address</label>
                   <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
                 </div>
               <div className="form-group">
-                <label for="exampleInputUsername1">Username</label>
+                <label htmlFor="exampleInputUsername1">Username</label>
                 <input type="username" className="form-control" id="exampleInputUsername1" placeholder="Username"></input>
               </div>
               <div className="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label htmlFor="exampleInputPassword1">Password</label>
                 <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"></input>
               </div>
               <div className="buttonshell">

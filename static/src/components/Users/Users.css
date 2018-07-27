@@ -2,3 +2,20 @@
   display: inline-block;
   font-size: 2rem;
   margin-right: 30px; }
+
+.userprofile {
+  width: 180px;
+  height: 180px;
+  border: solid 1px; }
+
+.usershell {
+  max-width: 200px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px; }
+
+.profileselector {
+  color: black; }
+
+.profileselector:hover {
+  color: #009B35; }

@@ -33,9 +33,11 @@ class Users extends Component {
   render() {
       let users = this.state.users.map(function(user){
         return(
-          <div>
-          <div>{user.username}</div>
-          <div>{user.profile.profile_image}</div>
+          <div className='usershell' key={user.username}>
+            <a className='profileselector' href="#">
+            <img className='userprofile' src={user.profile.profile_picture} alt="User Profile"/>
+            <div className='username'>{user.username}</div>
+            </a>
           </div>
         )
       })

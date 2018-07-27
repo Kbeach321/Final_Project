@@ -34,6 +34,32 @@
   margin-top: 20px;
 }
 
+.gameshell{
+  max-width: 200px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px;
+}
+
+.gameselector{
+  color: black;
+}
+
+.gameselector:hover{
+  color: #009B35;
+}
+
+.gamecover{
+  width: 150px;
+  height: 150px;
+  border: solid 1px;
+}
+
+.gamename{
+
+}
+
+
 @media(max-width:1028px){
   .submit_search{
     margin-top:5px !important;

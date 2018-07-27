@@ -35,14 +35,16 @@ class GamesListCreateAPIView(generics.ListCreateAPIView):
 
 class GamesProxyView(APIView):
     def get(self,request):
+        # {'game_id': '22'}
+        # request.data['game_id']
         result = igdb.games({
         'filters' :{
-            '[platforms][any]':33
-            # ['33','22','24','19','4','21','7','8','32','23','11','12']
+            '[platforms][any]':'33,22,24,19,4,21,7,8,32,23,11,12'
         },
-        'fields' : ['name', 'cover', 'platforms']
+        'fields' : ['name', 'cover', 'platforms'],
+        'limit' : 50
         })
-        return Response(result)
+        return Response(result.body)
 
 
 

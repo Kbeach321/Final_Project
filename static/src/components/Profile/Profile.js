@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './Profile.css';
 import default_profile from './../Images/default-profile.jpg'
+// User profile instead of default //
 
 class Profile extends Component {
   constructor(props) {
