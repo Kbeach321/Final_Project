@@ -19,3 +19,10 @@
 
 .profileselector:hover {
   color: #009B35; }
+
+.viewrender {
+  min-height: 83vh; }
+
+@media (max-width: 400px) {
+  .display_users {
+    text-align: center; } }

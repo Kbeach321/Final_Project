@@ -11,7 +11,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="profileheight container-fluid">
         <div className="row">
           <div className="media">
             <img className="profile_picture" src={default_profile} alt="Generic placeholder image"></img>
@@ -28,7 +28,7 @@ class Profile extends Component {
           </div>
         <div className="games_log row">
           <div className="col-12 align-self-center">
-            <span> [Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned][Games Owned]</span>
+            <p className="games_owned"> Collection: </p>
           </div>
           </div>
         </div>

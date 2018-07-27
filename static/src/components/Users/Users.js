@@ -42,7 +42,7 @@ class Users extends Component {
         )
       })
     return (
-    <div className="container-fluid">
+    <div className="viewrender container-fluid">
       <div className='row searchbar'>
         <div className="col-12">
           <form className="form-inline ">

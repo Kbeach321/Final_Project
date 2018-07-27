@@ -4,6 +4,9 @@
   border: solid 1px;
   margin-top: 50px; }
 
+.profileheight {
+  min-height: 85.7vh; }
+
 .media-body {
   margin-top: 50px;
   margin-left: 40px; }
@@ -25,6 +28,9 @@
 .media {
   margin-left: 30px; }
 
+.games_owned {
+  font-size: 3rem; }
+
 @media (max-width: 768px) {
   .bio-info {
     display: block; }
@@ -32,4 +38,7 @@
     width: 100%;
     justify-content: center; }
   .media-body {
-    margin-left: 0px; } }
+    margin-left: 0px; }
+  .games_owned {
+    text-align: center;
+    font-size: 2.5rem; } }
