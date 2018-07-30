@@ -17,8 +17,8 @@ igdb = igdb("857a9df19e79338f5a1f9d88bb6a5a4b")
 class IndexView(TemplateView):
     template_name = "index.html"
 
-# class UserCreateAPIView(generics.):
-#     pass
+class UserListCreateAPIView(generics.ListCreateAPIView):
+    pass
 
 
 # Users List Display

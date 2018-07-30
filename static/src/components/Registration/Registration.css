@@ -7,6 +7,9 @@
 .newuser {
   margin: 0 5px; }
 
+.registershell {
+  min-height: 85.7vh; }
+
 @media (max-width: 786px) {
   .buttonshell {
     text-align: center; }

@@ -10,14 +10,70 @@ class Profile extends Component {
   }
 
   render() {
+    // let image;
+    // if(user.profile) {
+    //   image = <img className='userprofile' src={user.profile.profile_picture} alt="User Profile"/>
+    // } else {
+    //   image = <img className='userprofile' src={default_profile} alt="User Profile"/>
+    // }
+
     return (
       <div className="profileheight container-fluid">
         <div className="row">
           <div className="media">
+            {/* Display Image of User -- default or uploaded */}
             <img className="profile_picture" src={default_profile} alt="Generic placeholder image"></img>
+
+            {/* Buttons Container */}
             <div className="buttondiv">
-              <button type="button" className="upload_btn btn-sm btn-outline-dark">Upload Image</button>
-              <button type="button" className="bio_btn btn-sm btn-outline-dark">Edit Descripton</button>
+              {/* <!-- Button trigger modal (Image Upload)--> */}
+              <button type="button" className="upload_btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                Upload Image
+              </button>
+              {/* <!-- Modal --> */}
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Edit Description:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              {/* <!-- Button trigger modal (Descripton)--> */}
+              <button type="button" className="btn-sm btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                Edit Descripton
+              </button>
+              {/* <!-- Modal --> */}
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Edit Description:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
             <div className="col-12 align-self-center bio-info media-body">

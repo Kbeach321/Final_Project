@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
 
 
@@ -22,7 +22,7 @@ import Login from './components/Log-in/Log-in.js'
 const history = createBrowserHistory()
 
 ReactDOM.render(
-  <BrowserRouter history={history}>
+  <Router history={history}>
       <BaseLayout>
         <Switch>
           <Route path='/games' component={Games}/>
@@ -33,6 +33,6 @@ ReactDOM.render(
           <Route exact path='/' component={Home}/>
         </Switch>
       </BaseLayout>
-  </BrowserRouter>,
+  </Router>,
  document.getElementById('root'));
 registerServiceWorker();

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import './Log-in.css';
 
 // Login Component //
@@ -50,11 +50,11 @@ class Login extends Component {
   )
   .catch(error => console.error('Error:', error));
  }
- 
+
 // CLI //
   render() {
     return (
-      <div className="container-fluid">
+      <div className="loginshell container-fluid">
         <row className='justify-content-center'>
           <div className="col-12 align-self-center">
             <h1 className='reg_form'> Log-in Form</h1>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import './Users.css';
+import default_profile from './../Images/default-profile.jpg'
 
 class Users extends Component {
   constructor(props) {
@@ -31,23 +31,28 @@ class Users extends Component {
   }
 
   render() {
-      let users = this.state.users.map(function(user){
-        return(
-          <div className='usershell' key={user.username}>
-            <a className='profileselector' href="#">
-            <img className='userprofile' src={user.profile.profile_picture} alt="User Profile"/>
-            <div className='username'>{user.username}</div>
-            </a>
-          </div>
-        )
-      })
+    let users = this.state.users.map(function(user){
+    let image;
+    if(user.profile) {
+      image = <img className='userprofile' src={user.profile.profile_picture} alt="User Profile"/>
+    } else {
+      image = <img className='userprofile' src={default_profile} alt="User Profile"/>
+    }
+      return(
+        <div className='usershell' key={user.username}>
+          <a className='profileselector' href="#">
+          {image}
+          <div className='username'>{user.username}</div>
+          </a>
+        </div>
+      )
+    })
     return (
     <div className="viewrender container-fluid">
       <div className='row searchbar'>
         <div className="col-12">
           <form className="form-inline ">
             <span className="current_users"> Find Users </span>
-
             {/* <div className="searchbar_right">
               <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
               <button className="btn btn-outline-success my-2  submit_search" type="submit">Search</button>
