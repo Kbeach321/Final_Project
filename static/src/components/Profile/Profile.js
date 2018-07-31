@@ -8,29 +8,28 @@ class Profile extends Component {
     this.state = {
       user : {
         username: '',
-        profile: {
-          description: ''
-        }
+        description: '',
+        profile_image: ''
       },
       collection : []
     }
     this._inputHandler = this._inputHandler.bind(this);
     this._updateDescription = this._updateDescription.bind(this);
     this._uploadProfile = this._uploadProfile.bind(this);
+    this._fileInputHandler = this._fileInputHandler.bind(this);
   }
 
   _inputHandler(event){
-
     if(event.target.name === 'description') {
       let user = this.state.user;
-      user.profile.description = event.target.value;
+      user.description = event.target.value;
       this.setState({user: user})
     }
+  }
 
-    // let obj = {}
-    // let key = event.target.name;
-    // obj[key] = event.target.value;
-    // this.setState(obj)
+  _fileInputHandler(event){
+    let fileUpload = event.target.files[0]
+     this.setState({picture:fileUpload})
   }
 
   componentDidMount() {
@@ -47,11 +46,6 @@ class Profile extends Component {
       .then(res => res.json())
     //test the response
       .then(resJSON => {
-        console.log('comp did mount', resJSON)
-        let user = resJSON;
-        if(!user.profile) {
-          user.profile = {}
-        }
         this.setState({user: resJSON});
         }
       )
@@ -61,7 +55,7 @@ class Profile extends Component {
   _updateDescription(event) {
     event.preventDefault();
     let data = {
-      description : this.state.user.profile.description
+      description : this.state.user.description
     }
 
     let url = `http://localhost:8000/profile/`;
@@ -81,7 +75,7 @@ class Profile extends Component {
     //test the response
       .then(resJSON => {
         console.log(resJSON)
-        // this.setState({descripton : this.state.user.profile.descripton})
+        // close modal
       }
       )
       .catch(error => console.error('Error:', error));
@@ -90,38 +84,34 @@ class Profile extends Component {
 
   _uploadProfile(event) {
     event.preventDefault();
-    let data = {
-      profile_image : this.state.user.profile.profile_picture,
-    }
     let url = `http://localhost:8000/profile/`;
     let self = this;
     let token = localStorage.getItem('auth_token');
+    let formData = new FormData()
+    formData.append('profile_picture', this.state.picture)
+
     fetch(url, {
-      method: 'PUT',
-      body: JSON.stringify(data),
+      method: 'PATCH',
+      body: formData,
       headers:{
-        'Content-Type': 'application/json',
         'Authorization' : token
       }
     })
+    .then(res => res.json())
+    .then(resJSON => {
+      this.setState({user: resJSON});
+      }
+    )
+    .catch(error => console.error('Error:', error));
   }
 
   render() {
-    console.log('true state', this.state)
-
     return (
       <div className="profileheight container-fluid">
         <div className="row">
           <div className="media">
             {/* Display Image of User -- default or uploaded */}
-            {/* Set src to {image} */}
-
-
-            {this.state.user.profile ? <img className="profile_picture" src={this.state.user.profile.profile_picture} alt="Profile Image"/> : null}
-            {/* <img className="profile_picture" src={this.state.user.profile.profile_picture} alt="Profile Image"/> */}
-
-
-
+            <img className="profile_picture" src={this.state.user.profile_picture} alt="Profile Image"/>
             {/* Buttons Container */}
             <div className="buttondiv">
               {/* <!-- Button trigger modal (Image Upload)--> */}
@@ -133,9 +123,9 @@ class Profile extends Component {
                 <div className="modal-dialog" role="document">
                   <div className="modal-content">
                     <div className="modal-body">
-                      <form>
-                        <div className="form-group" onSubmit={this._uploadProfile}>
-                          <input type="file" name="pic" accept=""/>
+                      <form onSubmit={this._uploadProfile}>
+                        <div className="form-group" >
+                          <input type="file" name="pic" accept="" onChange={this._fileInputHandler}/>
                           <input type="submit"/>
                         </div>
                       </form>
@@ -155,18 +145,8 @@ class Profile extends Component {
                     <div className="modal-body">
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Edit Description:</label>
-
-
-
-
-
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value={this.state.user.profile.description} onChange={this._inputHandler}>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value={this.state.user.description} onChange={this._inputHandler}>
                         </textarea>
-
-
-
-
-
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -181,23 +161,14 @@ class Profile extends Component {
           </div>
             <div className="col-12 align-self-center bio-info media-body">
               <h5> {this.state.user.username}'s Bio</h5>
-
-
-
-
-              {this.state.user.profile ? <p>  About Me: <br/> {this.state.user.profile.description} </p> : null}
-              {/* <p>  About Me: <br/> {this.state.user.profile.description} </p> */}
-
-
-
-
-
+                <p>  About Me: <br/> {this.state.user.description} </p>
             </div>
           </div>
         <div className="games_log row">
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
             <a href="/games"> <p> Add Games + </p> </a>
+
           </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ class LoginSerializer(serializers.ModelSerializer):
 # GamesSerializer Shows all the Games
 class GamesSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ["name", "cover", "platform", "users"]
+        fields = ["name", "cover", "platform", "users", "slug"]
         model = Games
 
 
@@ -28,7 +28,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         # fields = ["profile_picture", "descripton"]
 
 class UsersSerializer(serializers.ModelSerializer):
-    profile = UserProfileSerializer()
+    # profile = UserProfileSerializer()
     class Meta:
-        fields = ["username","profile"]
+        fields = ["username","description","profile_picture"]
         model = User

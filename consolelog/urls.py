@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 
 from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
-                                GamesProxyView, UserProfileListCreateAPIView
+                                GamesProxyView, UserProfileAPIView
 
 
 urlpatterns = [
@@ -30,8 +30,8 @@ urlpatterns = [
     path('auth/', include("djoser.urls.authtoken")),
 
     # Profile -- Based on users token
-    path('profile/', UserProfileListCreateAPIView.as_view(), name='profile'),
-    path('profile/<int:pk>/', UserProfileListCreateAPIView.as_view(), name='profile-id'),
+    path('profile/', UserProfileAPIView.as_view(), name='profile'),
+    # path('profile/<int:pk>/', UserProfileListCreateAPIView.as_view(), name='profile-id'),
 
     # Games -- Seach & Display games
     path('proxy/games/', GamesProxyView.as_view(), name='games'),

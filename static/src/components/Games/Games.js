@@ -16,6 +16,7 @@ class Games extends Component {
       this._filterGames = this._filterGames.bind(this);
       this._selectPlatform = this._selectPlatform.bind(this);
       this._selectTitle = this._selectTitle.bind(this);
+      this._addGame = this._addGame.bind(this);
   }
 
   componentDidMount() {
@@ -73,21 +74,23 @@ class Games extends Component {
     this.setState({selectedTitle});
   }
 
+  _addGame(game) {
+    console.log(game)
+
+  }
 
 
   render() {
-    console.log('games', this.state.games)
-    let games = this.state.games.map(function(game){
+    let games = this.state.games.map((game)=>{
       return(
         <div className='gameshell' key={game.id}>
           <a className='gameselector' href="#">
           <img className='gamecover' src={game.cover ? game.cover.url : defaultCover} alt="User Profile"/>
           <div className='gamename'>{game.name}</div> </a>
-          <a href="#" className="addgametag">  <span className="addgame"> Add to Collection + </span> </a>
+          <a href="#" className="addgametag" onClick={(event)=>{event.preventDefault(); this._addGame(game)}}>  <span className="addgame"> Add to Collection + </span> </a>
         </div>
       )
     })
-    console.log('state', this.state.games);
     return (
       <div className='container-fluid games_shell'>
         <div className="row shell">

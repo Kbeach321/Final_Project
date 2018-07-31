@@ -32,16 +32,10 @@ class Users extends Component {
 
   render() {
     let users = this.state.users.map(function(user){
-    let image;
-    if(user.profile) {
-      image = <img className='userprofile' src={user.profile.profile_picture} alt="User Profile"/>
-    } else {
-      image = <img className='userprofile' src={default_profile} alt="User Profile"/>
-    }
       return(
         <div className='usershell' key={user.username}>
           <a className='profileselector' href="#">
-          {image}
+          <img className='userprofile' src={user.profile_picture} alt="User Profile"/>
           <div className='username'>{user.username}</div>
           </a>
         </div>
