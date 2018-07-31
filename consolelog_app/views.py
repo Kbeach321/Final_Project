@@ -33,10 +33,27 @@ class UsersListCreateAPIView(generics.ListCreateAPIView):
     queryset = User.objects.select_related('profile').all()
     serializer_class = UsersSerializer
 
-# Games List Display
+# Add games to profile
 class GamesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+
+    def create(self,request,*args,**kwargs):
+        id = request.data['igdb_id']
+        games = Game.objects.filter(igdb_id=id)
+        if games.exists():
+            games[0].users.add(request.user)
+            serializer = self.get_serializer(data=games[0])
+            serializer.is_valid(raise_exception=True)
+            headers = self.get_success_headers(serializer.data)
+            response = Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        else:
+            request.data["users"] = [request.user.pk]
+            response = super().create(request, *args, **kwargs)
+        return response
+
+
+
 
 
 class GamesProxyView(APIView):

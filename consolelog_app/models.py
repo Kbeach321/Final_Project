@@ -18,8 +18,8 @@ class UserProfile(models.Model):
 
 # Games --> Multipule Users for each game
 class Game(models.Model):
-    users = models.ManyToManyField(User)
-    name = models.CharField(max_length=100, default='')
-    cover = models.FileField(upload_to = 'covers')
-    platform = models.CharField(max_length=20, default = '')
-    slug = models.CharField(max_length=100, default= '')
+    users = models.ManyToManyField(User, related_name='collection')
+    name = models.CharField(max_length=100)
+    cover = models.CharField(max_length=500)
+    # platforms = models.CharField(max_length=20)
+    igdb_id = models.CharField(max_length=50)

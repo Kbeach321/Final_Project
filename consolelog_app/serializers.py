@@ -16,9 +16,10 @@ class LoginSerializer(serializers.ModelSerializer):
 # GamesSerializer Shows all the Games
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ["name", "cover", "platform", "users", "slug"]
+        fields = ["name", "cover", "users", "igdb_id"]
         model = Game
 
+# removed platforms
 
 # UsersSerializer --> #Returns profile_picture from Profile, to render to Users!
 class UserProfileSerializer(serializers.ModelSerializer):

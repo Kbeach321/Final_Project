@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import './Profile.css';
 // User profile instead of default //
 
+// Get request to games end point to get all games
+//  filter by logged in user
+//  get query set method on 
+//  def get quesry set = game.objects.filter(users=self.request.user.pk)
+// or
+// request.user.collection.all()
+
+
 class Profile extends Component {
   constructor(props) {
     super(props);

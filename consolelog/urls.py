@@ -35,7 +35,7 @@ urlpatterns = [
 
     # Games -- Seach & Display games
     path('proxy/games/', GamesProxyView.as_view(), name='games'),
-    path('games/<int:pk>/', GamesListCreateAPIView.as_view(), name='games-id'),
+    path('games/', GamesListCreateAPIView.as_view(), name='games-id'),
 
     # Users -- Search and display all users
     path('users/', UsersListCreateAPIView.as_view(), name='users'),

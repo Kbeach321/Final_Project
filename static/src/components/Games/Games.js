@@ -76,8 +76,30 @@ class Games extends Component {
   }
 
   _addGame(game) {
+    game.igdb_id = game.id
+    delete game.id
+    game.cover = game.cover.url
     console.log(game)
-
+    let token = localStorage.getItem('auth_token');
+    fetch(`${API_URL}/games/`, {
+      method: 'POST',
+      body: JSON.stringify(game),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
+    //return your response --> Json
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(resJSON => {
+        // this.setState({authenticated: true});
+      })
+      .catch(error => console.error('Error:', error));
   }
 
 
