@@ -7,6 +7,7 @@ class Header extends Component {
   }
 
   render() {
+    let authenticated = localStorage.getItem('auth_token');
     return (
       <nav className="navbar navbar-expand-sm navbar-light nav-color">
         <a className="navbar-brand" href="/">Console.Log</a>
@@ -30,7 +31,10 @@ class Header extends Component {
           </ul>
           <ul className= "nav navbar-nav login_ul">
             <li className="nav-item login_li">
-              <a href="/login" className="nav-link">Log-in</a>
+              {
+                authenticated ? <a href="/" className="nav-link">Log-out</a> : <a href="/login" className="nav-link">Log-in</a>
+              }
+              {/* <a href="/login" className="nav-link">Log-in</a> */}
             </li>
           </ul>
         </div>

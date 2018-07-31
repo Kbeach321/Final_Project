@@ -17,6 +17,10 @@ class Profile extends Component {
     this._updateDescription = this._updateDescription.bind(this);
     this._uploadProfile = this._uploadProfile.bind(this);
     this._fileInputHandler = this._fileInputHandler.bind(this);
+
+    if(!localStorage.getItem('auth_token')) {
+      this.props.history.push('/login')
+    }
   }
 
   _inputHandler(event){
@@ -57,11 +61,8 @@ class Profile extends Component {
     let data = {
       description : this.state.user.description
     }
-
     let url = `http://localhost:8000/profile/`;
-    // let self = this;
     let token = localStorage.getItem('auth_token');
-
     fetch(url, {
       method: 'PATCH',
       body: JSON.stringify(data),
@@ -71,13 +72,11 @@ class Profile extends Component {
       }
     })
     //return your response --> Json
-      .then(res => res.json())
-    //test the response
-      .then(resJSON => {
-        console.log(resJSON)
-        // close modal
-      }
-      )
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.statusText)
+        }
+      })
       .catch(error => console.error('Error:', error));
      }
 
