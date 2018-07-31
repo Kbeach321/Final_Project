@@ -9,8 +9,6 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import {Router, Route, Switch} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
 
-
-
 import BaseLayout from './components/Layout/BaseLayout.js';
 import Home from './components/Home/Home.js'
 import Games from './components/Games/Games.js'

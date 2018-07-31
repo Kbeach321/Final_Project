@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './Games.css';
 
 import defaultCover from './../Images/no_image.gif';
-
+let API_URL = process.env.REACT_APP_API_URL
+console.log("potatoes", API_URL)
 
 class Games extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Games extends Component {
 
   componentDidMount() {
    let self = this;
-   fetch(`/proxy/games/?platform_id=${this.state.platforms}&search=${this.state.selectedTitle}`)
+   fetch(`${API_URL}/proxy/games/?platform_id=${this.state.platforms}&search=${this.state.selectedTitle}`)
    .then(function(response){
      if(!response.ok){
        throw Error(response.statusText);
@@ -46,7 +47,7 @@ class Games extends Component {
     let selection;
     this.state.selectedPlatform ? selection = this.state.selectedPlatform : selection = this.state.platforms;
 
-    fetch(`/proxy/games/?platform_id=${selection}&search=${this.state.selectedTitle}`)
+    fetch(`${API_URL}/proxy/games/?platform_id=${selection}&search=${this.state.selectedTitle}`)
     .then(function(response){
       if(!response.ok){
         throw Error(response.statusText);

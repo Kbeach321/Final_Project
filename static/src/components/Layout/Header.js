@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from "react-router-dom";
 import './Header.css';
 
 class Header extends Component {
@@ -10,31 +11,30 @@ class Header extends Component {
     let authenticated = localStorage.getItem('auth_token');
     return (
       <nav className="navbar navbar-expand-sm navbar-light nav-color">
-        <a className="navbar-brand" href="/">Console.Log</a>
+        <NavLink className="navbar-brand" to="/">Console.Log</NavLink>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">Home</a>
+              <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/games">Games</a>
+              <NavLink className="nav-link" to="/games">Games</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/users">Users</a>
+              <NavLink className="nav-link" to="/users">Users</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/profile">Profile</a>
+              <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
           </ul>
           <ul className= "nav navbar-nav login_ul">
             <li className="nav-item login_li">
               {
-                authenticated ? <a href="/" className="nav-link">Log-out</a> : <a href="/login" className="nav-link">Log-in</a>
+                authenticated ? <NavLink to="/" className="nav-link">Log-out</NavLink> : <NavLink to="/login" className="nav-link">Log-in</NavLink>
               }
-              {/* <a href="/login" className="nav-link">Log-in</a> */}
             </li>
           </ul>
         </div>
