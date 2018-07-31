@@ -21,7 +21,7 @@ class Games extends Component {
 
   componentDidMount() {
    let self = this;
-   fetch(`http://localhost:8000/proxy/games/?platform_id=${this.state.platforms}&search=${this.state.selectedTitle}`)
+   fetch(`/proxy/games/?platform_id=${this.state.platforms}&search=${this.state.selectedTitle}`)
    .then(function(response){
      if(!response.ok){
        throw Error(response.statusText);
@@ -46,7 +46,7 @@ class Games extends Component {
     let selection;
     this.state.selectedPlatform ? selection = this.state.selectedPlatform : selection = this.state.platforms;
 
-    fetch(`http://localhost:8000/proxy/games/?platform_id=${selection}&search=${this.state.selectedTitle}`)
+    fetch(`/proxy/games/?platform_id=${selection}&search=${this.state.selectedTitle}`)
     .then(function(response){
       if(!response.ok){
         throw Error(response.statusText);
