@@ -24,7 +24,8 @@ class GamesSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ["profile_picture", "descripton"]
+        fields = '__all__'
+        # fields = ["profile_picture", "descripton"]
 
 class UsersSerializer(serializers.ModelSerializer):
     profile = UserProfileSerializer()

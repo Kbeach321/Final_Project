@@ -7,7 +7,10 @@ class Profile extends Component {
     super(props);
     this.state = {
       user : {
-        profile: {}
+        username: '',
+        profile: {
+          description: ''
+        }
       },
       collection : []
     }
@@ -21,13 +24,13 @@ class Profile extends Component {
     if(event.target.name === 'description') {
       let user = this.state.user;
       user.profile.description = event.target.value;
-      console.log('user', user.profile.description)
       this.setState({user: user})
     }
-    let obj = {}
-    let key = event.target.name;
-    obj[key] = event.target.value;
-    this.setState(obj)
+
+    // let obj = {}
+    // let key = event.target.name;
+    // obj[key] = event.target.value;
+    // this.setState(obj)
   }
 
   componentDidMount() {
@@ -44,6 +47,11 @@ class Profile extends Component {
       .then(res => res.json())
     //test the response
       .then(resJSON => {
+        console.log('comp did mount', resJSON)
+        let user = resJSON;
+        if(!user.profile) {
+          user.profile = {}
+        }
         this.setState({user: resJSON});
         }
       )
@@ -55,9 +63,11 @@ class Profile extends Component {
     let data = {
       description : this.state.user.profile.description
     }
+
     let url = `http://localhost:8000/profile/`;
-    let self = this;
+    // let self = this;
     let token = localStorage.getItem('auth_token');
+
     fetch(url, {
       method: 'PATCH',
       body: JSON.stringify(data),
@@ -70,8 +80,9 @@ class Profile extends Component {
       .then(res => res.json())
     //test the response
       .then(resJSON => {
-        this.setState({descripton : this.state.user.profile.descripton})
-        }
+        console.log(resJSON)
+        // this.setState({descripton : this.state.user.profile.descripton})
+      }
       )
       .catch(error => console.error('Error:', error));
      }
@@ -86,7 +97,7 @@ class Profile extends Component {
     let self = this;
     let token = localStorage.getItem('auth_token');
     fetch(url, {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(data),
       headers:{
         'Content-Type': 'application/json',
@@ -96,13 +107,21 @@ class Profile extends Component {
   }
 
   render() {
+    console.log('true state', this.state)
+
     return (
       <div className="profileheight container-fluid">
         <div className="row">
           <div className="media">
             {/* Display Image of User -- default or uploaded */}
             {/* Set src to {image} */}
-            <img className="profile_picture" src={this.state.user.profile.profile_picture} alt="Profile Image"/>
+
+
+            {this.state.user.profile ? <img className="profile_picture" src={this.state.user.profile.profile_picture} alt="Profile Image"/> : null}
+            {/* <img className="profile_picture" src={this.state.user.profile.profile_picture} alt="Profile Image"/> */}
+
+
+
             {/* Buttons Container */}
             <div className="buttondiv">
               {/* <!-- Button trigger modal (Image Upload)--> */}
@@ -136,8 +155,18 @@ class Profile extends Component {
                     <div className="modal-body">
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Edit Description:</label>
+
+
+
+
+
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value={this.state.user.profile.description} onChange={this._inputHandler}>
                         </textarea>
+
+
+
+
+
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -152,13 +181,23 @@ class Profile extends Component {
           </div>
             <div className="col-12 align-self-center bio-info media-body">
               <h5> {this.state.user.username}'s Bio</h5>
-              <p>  About Me: <br/> {this.state.user.profile.description} </p>
+
+
+
+
+              {this.state.user.profile ? <p>  About Me: <br/> {this.state.user.profile.description} </p> : null}
+              {/* <p>  About Me: <br/> {this.state.user.profile.description} </p> */}
+
+
+
+
+
             </div>
           </div>
         <div className="games_log row">
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
-            <a href="/games"> <span> Add Games + </span> </a>
+            <a href="/games"> <p> Add Games + </p> </a>
           </div>
           </div>
         </div>

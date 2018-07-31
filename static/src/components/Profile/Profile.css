@@ -29,7 +29,8 @@
   margin-left: 30px; }
 
 .games_owned {
-  font-size: 3rem; }
+  font-size: 3rem;
+  margin-bottom: 0px; }
 
 @media (max-width: 768px) {
   .bio-info {
