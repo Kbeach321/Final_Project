@@ -1,5 +1,4 @@
 __pycache__/
 *.pyc
 .direnv/
-Pipfile.lock
 db.sqlite3
