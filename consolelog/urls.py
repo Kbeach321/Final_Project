@@ -18,25 +18,26 @@ from django.urls import path, include
 from django.conf import settings
 
 from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
-                                GamesProxyView
+                                GamesProxyView, UserProfileListCreateAPIView
 
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-
     path('admin/', admin.site.urls),
 
     # User Authentification -- Create / Delete User #
     path('auth/', include("djoser.urls")),
     path('auth/', include("djoser.urls.authtoken")),
-    # path('/auth/users/create/',  ),
 
+    # Profile -- Based on users token
+    path('profile/', UserProfileListCreateAPIView.as_view(), name='profile'),
+    path('profile/<int:pk>/', UserProfileListCreateAPIView.as_view(), name='profile-id'),
 
-
-
+    # Games -- Seach & Display games
     path('proxy/games/', GamesProxyView.as_view(), name='games'),
     path('games/<int:pk>/', GamesListCreateAPIView.as_view(), name='games-id'),
 
+    # Users -- Search and display all users
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
     path('users/<int:pk>/', UsersListCreateAPIView.as_view(), name='users-id'),
 

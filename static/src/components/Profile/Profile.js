@@ -1,90 +1,164 @@
 import React, { Component } from 'react';
-
 import './Profile.css';
-import default_profile from './../Images/default-profile.jpg'
 // User profile instead of default //
 
 class Profile extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user : {
+        profile: {}
+      },
+      collection : []
+    }
+    this._inputHandler = this._inputHandler.bind(this);
+    this._updateDescription = this._updateDescription.bind(this);
+    this._uploadProfile = this._uploadProfile.bind(this);
+  }
+
+  _inputHandler(event){
+
+    if(event.target.name === 'description') {
+      let user = this.state.user;
+      user.profile.description = event.target.value;
+      console.log('user', user.profile.description)
+      this.setState({user: user})
+    }
+    let obj = {}
+    let key = event.target.name;
+    obj[key] = event.target.value;
+    this.setState(obj)
+  }
+
+  componentDidMount() {
+    let self = this;
+    let token = localStorage.getItem('auth_token');
+    fetch(`http://localhost:8000/profile/`,{
+      method:'GET',
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
+    //return your response --> Json
+      .then(res => res.json())
+    //test the response
+      .then(resJSON => {
+        this.setState({user: resJSON});
+        }
+      )
+      .catch(error => console.error('Error:', error));
+  }
+
+  _updateDescription(event) {
+    event.preventDefault();
+    let data = {
+      description : this.state.user.profile.description
+    }
+    let url = `http://localhost:8000/profile/`;
+    let self = this;
+    let token = localStorage.getItem('auth_token');
+    fetch(url, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
+    //return your response --> Json
+      .then(res => res.json())
+    //test the response
+      .then(resJSON => {
+        this.setState({descripton : this.state.user.profile.descripton})
+        }
+      )
+      .catch(error => console.error('Error:', error));
+     }
+
+
+  _uploadProfile(event) {
+    event.preventDefault();
+    let data = {
+      profile_image : this.state.user.profile.profile_picture,
+    }
+    let url = `http://localhost:8000/profile/`;
+    let self = this;
+    let token = localStorage.getItem('auth_token');
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
   }
 
   render() {
-    // let image;
-    // if(user.profile) {
-    //   image = <img className='userprofile' src={user.profile.profile_picture} alt="User Profile"/>
-    // } else {
-    //   image = <img className='userprofile' src={default_profile} alt="User Profile"/>
-    // }
-
     return (
       <div className="profileheight container-fluid">
         <div className="row">
           <div className="media">
             {/* Display Image of User -- default or uploaded */}
-            <img className="profile_picture" src={default_profile} alt="Generic placeholder image"></img>
-
+            {/* Set src to {image} */}
+            <img className="profile_picture" src={this.state.user.profile.profile_picture} alt="Profile Image"/>
             {/* Buttons Container */}
             <div className="buttondiv">
               {/* <!-- Button trigger modal (Image Upload)--> */}
-              <button type="button" className="upload_btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" className="upload_btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#imageModal">
                 Upload Image
               </button>
               {/* <!-- Modal --> */}
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-body">
+              <div className="modal fade" id="imageModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-body">
                       <form>
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Edit Description:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                    </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save Changes</button>
+                        <div className="form-group" onSubmit={this._uploadProfile}>
+                          <input type="file" name="pic" accept=""/>
+                          <input type="submit"/>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
-
-
               {/* <!-- Button trigger modal (Descripton)--> */}
-              <button type="button" className="btn-sm btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" className="btn-sm btn-outline-dark" data-toggle="modal" data-target="#descriptionModal">
                 Edit Descripton
               </button>
               {/* <!-- Modal --> */}
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <form>
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Edit Description:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <div className="modal fade" id="descriptionModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                  <form onSubmit={this._updateDescription}>
+                  <div className="modal-content">
+                    <div className="modal-body">
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlTextarea1">Edit Description:</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value={this.state.user.profile.description} onChange={this._inputHandler}>
+                        </textarea>
                       </div>
-                    </form>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save Changes</button>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" className="btn btn-primary">Save Changes </button>
                     </div>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
             <div className="col-12 align-self-center bio-info media-body">
-              <h5> [Username]'s Bio</h5>
-              <p> Descripton: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi numquam nulla reprehenderit temporibus rerum vel voluptatem consequatur id quaerat voluptates nam sequi consequuntur aliquam iste facilis at nostrum, magnam minima.
-              </p>
+              <h5> {this.state.user.username}'s Bio</h5>
+              <p>  About Me: <br/> {this.state.user.profile.description} </p>
             </div>
           </div>
         <div className="games_log row">
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
+            <a href="/games"> <span> Add Games + </span> </a>
           </div>
           </div>
         </div>

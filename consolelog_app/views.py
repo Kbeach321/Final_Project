@@ -3,8 +3,8 @@ from django.views.generic import TemplateView
 import requests
 from rest_framework import generics
 from rest_framework.views import APIView
-from consolelog_app.models import Games, User
-from consolelog_app.serializers import GamesSerializer, UsersSerializer, LoginSerializer
+from consolelog_app.models import Games, User, UserProfile
+from consolelog_app.serializers import GamesSerializer, UsersSerializer, LoginSerializer, UserProfileSerializer
 from rest_framework.response import Response
 from django.conf import settings
 
@@ -17,8 +17,19 @@ igdb = igdb("857a9df19e79338f5a1f9d88bb6a5a4b")
 class IndexView(TemplateView):
     template_name = "index.html"
 
-class UserListCreateAPIView(generics.ListCreateAPIView):
-    pass
+
+#User Profile Page -- For a Specific Endpoint
+class UserProfileListCreateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UsersSerializer
+    def get_object(self):
+        logged_in_user = self.request.user
+        user = User.objects.get(pk=logged_in_user.pk)
+        return user
+
+    # def get(self, request):
+    #     print(request.user)
+    #     return Response(UsersSerializer(user).data)
 
 
 # Users List Display
@@ -30,7 +41,6 @@ class UsersListCreateAPIView(generics.ListCreateAPIView):
 class GamesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Games.objects.all()
     serializer_class = GamesSerializer
-
 
 
 class GamesProxyView(APIView):

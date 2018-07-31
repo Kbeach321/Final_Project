@@ -19,11 +19,13 @@ class GamesSerializer(serializers.ModelSerializer):
         fields = ["name", "cover", "platform", "users"]
         model = Games
 
+
 # UsersSerializer --> #Returns profile_picture from Profile, to render to Users!
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ["profile_picture"]
+        fields = ["profile_picture", "descripton"]
+
 class UsersSerializer(serializers.ModelSerializer):
     profile = UserProfileSerializer()
     class Meta:

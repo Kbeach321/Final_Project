@@ -41,7 +41,7 @@ class Login extends Component {
   .then(res => res.json())
 //test the response
   .then(resJSON => {
-    localStorage.setItem('auth_token', 'token' + resJSON.auth_token);
+    localStorage.setItem('auth_token', 'token ' + resJSON.auth_token);
 // Authenticate Login
     this.setState({authenticated: true});
 // Push to Profile Page -- When Login confirmed

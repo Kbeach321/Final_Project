@@ -13,6 +13,7 @@ class Registration extends Component {
       }
       this._inputHandler = this._inputHandler.bind(this);
       this._createAccount = this._createAccount.bind(this);
+      this._login = this._login.bind(this);
   }
 
   _inputHandler(event){
@@ -22,40 +23,60 @@ class Registration extends Component {
     this.setState(obj)
   }
 
+  // Receive Token from the back end
+    _login() {
+      // event.preventDefault();
+      let data = {
+        username: this.state.username,
+        password: this.state.password
+      }
+      let url = `http://localhost:8000/auth/token/create/`;
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    })
+
+  //return your response --> Json
+    .then(res => res.json())
+  //test the response
+    .then(resJSON => {
+      localStorage.setItem('auth_token', 'token ' + resJSON.auth_token);
+  // Authenticate Login
+      this.setState({authenticated: true});
+  // Push to Profile Page -- When Login confirmed
+      this.props.history.push('/profile')
+      }
+    )
+    .catch(error => console.error('Error:', error));
+   }
+
 // Receive Token from the back end
   _createAccount(event) {
     event.preventDefault();
     let self = this;
     let data = this.state;
     let url = `http://localhost:8000/auth/users/create/`;
-console.log(this.state)
-  fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers:{
-      'Content-Type': 'application/json',
-    }
-  })
-
-  .then(function(response){
-    if(!response.ok){
-      throw Error(response.statusText);
-    }
-    return response.json()
-  })
-  .then(function(responseJSON){
-    console.log('response', responseJSON.data)
-
-    let obj = {
-      email: '',
-      username: '',
-      password: '',
-    }
-    self.setState(obj)
-  })
-  .catch(function(error){
-    console.log('Looks like there was a problem: \n', error);
-  });
+    // console.log(this.state)
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(function(response){
+      if(!response.ok){
+        throw Error(response.statusText);
+      }
+      self._login();
+    })
+    .catch(function(error){
+      console.log('Looks like there was a problem: \n', error);
+    });
 }
 
   render() {

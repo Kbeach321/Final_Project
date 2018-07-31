@@ -11,7 +11,7 @@ class User(AbstractUser):
 #  UserProfile Displays Users informatin (UNIQUE TO LOGGED IN USER)
 class UserProfile(models.Model):
     user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE,)
-    bio = models.CharField(max_length=250, blank=True, null=True)
+    descripton = models.CharField(max_length=250, blank=True, null=True)
     profile_picture = models.FileField(upload_to = 'profile_image', default='./../static/src/components/Images/default-profile.jpg')
 
 # Games --> Multipule Users for each game
