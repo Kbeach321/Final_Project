@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from consolelog_app.models import Games, User, UserProfile
+from consolelog_app.models import Game, User, UserProfile
 
 #RegisterSerializer --> Registers a User
 class RegisterSerializer(serializers.ModelSerializer):
@@ -14,10 +14,10 @@ class LoginSerializer(serializers.ModelSerializer):
         model = User
 
 # GamesSerializer Shows all the Games
-class GamesSerializer(serializers.ModelSerializer):
+class GameSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ["name", "cover", "platform", "users", "slug"]
-        model = Games
+        model = Game
 
 
 # UsersSerializer --> #Returns profile_picture from Profile, to render to Users!

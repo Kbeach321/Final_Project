@@ -3,8 +3,8 @@ from django.views.generic import TemplateView
 import requests
 from rest_framework import generics
 from rest_framework.views import APIView
-from consolelog_app.models import Games, User, UserProfile
-from consolelog_app.serializers import GamesSerializer, UsersSerializer, LoginSerializer, UserProfileSerializer
+from consolelog_app.models import Game, User, UserProfile
+from consolelog_app.serializers import GameSerializer, UsersSerializer, LoginSerializer, UserProfileSerializer
 from rest_framework.response import Response
 from django.conf import settings
 from django.utils.text import slugify
@@ -35,8 +35,8 @@ class UsersListCreateAPIView(generics.ListCreateAPIView):
 
 # Games List Display
 class GamesListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Games.objects.all()
-    serializer_class = GamesSerializer
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
 
 
 class GamesProxyView(APIView):

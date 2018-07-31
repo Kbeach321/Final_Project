@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     profile_picture = models.FileField(upload_to = 'profile_image', default='./../static/src/components/Images/default-profile.jpg')
 
 # Games --> Multipule Users for each game
-class Games(models.Model):
+class Game(models.Model):
     users = models.ManyToManyField(User)
     name = models.CharField(max_length=100, default='')
     cover = models.FileField(upload_to = 'covers')
