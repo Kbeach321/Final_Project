@@ -33,7 +33,7 @@ class Header extends Component {
           <ul className= "nav navbar-nav login_ul">
             <li className="nav-item login_li">
               {
-                authenticated ? <NavLink to="/" className="nav-link">Log-out</NavLink> : <NavLink to="/login" className="nav-link">Log-in</NavLink>
+                authenticated ? <NavLink to="/" className="nav-link" onClick={()=>{localStorage.removeItem('auth_token')}}>Log-out</NavLink> : <NavLink to="/login" className="nav-link">Log-in</NavLink>
               }
             </li>
           </ul>

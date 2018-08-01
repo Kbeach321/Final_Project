@@ -30,9 +30,9 @@
 }
 
 .viewrender{
-  min-height: 83vh;
+  min-height: 85.7vh;
   position: relative;
-  background: url('./../Images/user_background.png') no-repeat center/cover;
+  background: url('./../Images/user_background.png') repeat;
   color: white;
   }
 
@@ -43,7 +43,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: .9;
+  opacity: .8;
   background-color: black;
 }
 

@@ -198,7 +198,7 @@ componentDidMount() {
                     <div className="modal-body">
                       <form onSubmit={this._uploadProfile}>
                         <div className="form-group" >
-                          <input type="file" name="pic" accept="" onChange={this._fileInputHandler}/>
+                          <input className='photoupload' type="file" name="pic" accept="" onChange={this._fileInputHandler}/>
                           <input type="submit"/>
                         </div>
                       </form>
@@ -207,7 +207,7 @@ componentDidMount() {
                 </div>
               </div>
               {/* <!-- Button trigger modal (Descripton)--> */}
-              <button type="button" className="btn-sm btn-outline-dark" data-toggle="modal" data-target="#descriptionModal">
+              <button type="button" className=" editdescription btn-sm btn-outline-dark" data-toggle="modal" data-target="#descriptionModal">
                 Edit Descripton
               </button>
               {/* <!-- Modal --> */}
@@ -240,7 +240,7 @@ componentDidMount() {
         <div className="games_log row">
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
-            <a href="/games"> <p> Add Games + </p> </a>
+            <a href="/games"> <button className= 'myaddgamesbutton btn-sm btn-outline-dark'> Add Games </button> </a>
             <div className="collection">{collection}</div>
 
           </div>

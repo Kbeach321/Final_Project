@@ -4,10 +4,13 @@
   border: solid 1px;
   margin-top: 50px; }
 
+.photoupload {
+  background-color: gray; }
+
 .profileheight {
   min-height: 85.7vh;
   position: relative;
-  background: url("./../Images/user_background.png") no-repeat center/cover;
+  background: url("./../Images/user_background.png") repeat;
   color: white; }
 
 .profileheight::before {
@@ -17,7 +20,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: .9;
+  opacity: .8;
   background-color: black; }
 
 .media-body {
@@ -29,7 +32,37 @@
 
 .upload_btn {
   display: block;
-  margin: 110px 5px 5px 5px; }
+  margin: 110px 5px 5px 5px;
+  color: white;
+  background: gray; }
+
+.editdescription {
+  color: white;
+  background: gray; }
+
+.bio-info > h5 {
+  position: relative; }
+
+.bio-info > p {
+  position: relative; }
+
+.bio-info {
+  margin-right: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  position: relative;
+  border-radius: 10px; }
+
+.bio-info::before {
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  background-color: white;
+  opacity: .2;
+  border-radius: 10px; }
 
 .bio_btn {
   display: block;
@@ -39,7 +72,8 @@
   margin-left: 10px; }
 
 .media {
-  margin-left: 30px; }
+  margin-left: 30px;
+  position: relative; }
 
 .games_owned {
   font-size: 3rem;
@@ -54,8 +88,7 @@
   display: inline-block;
   margin: 10px;
   height: 250px;
-  position: relative;
-  border: solid .3px; }
+  position: relative; }
 
 .mygameselector {
   color: white;
@@ -82,11 +115,21 @@
   padding: 4px; }
 
 .mycollectionbutton {
-  margin-top: 10px;
-  background: white; }
+  color: white;
+  border-color: white;
+  margin-top: 10px; }
 
 .mycollectionbutton:hover {
-  color: red; }
+  color: white;
+  background: red; }
+
+.myaddgamesbutton {
+  color: white;
+  background: green; }
+
+.myaddgamesbutton:hover {
+  color: green;
+  background: lightgreen; }
 
 @media (max-width: 768px) {
   .bio-info {
@@ -94,8 +137,8 @@
   .media {
     width: 100%;
     justify-content: center; }
-  .media-body {
-    margin-left: 0px; }
   .games_owned {
     text-align: center;
-    font-size: 2.5rem; } }
+    font-size: 2.5rem; }
+  .myaddgamesbutton {
+    text-align: center; } }

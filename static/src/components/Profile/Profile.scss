@@ -6,10 +6,14 @@
 
 }
 
+.photoupload{
+  background-color: gray;
+}
+
 .profileheight{
   min-height: 85.7vh;
   position: relative;
-  background: url('./../Images/user_background.png') no-repeat center/cover;
+  background: url('./../Images/user_background.png') repeat;
   color: white;
 }
 
@@ -20,7 +24,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: .9;
+  opacity: .8;
   background-color: black;
 }
 
@@ -36,6 +40,42 @@
 .upload_btn{
   display: block;
   margin: 110px 5px 5px 5px;
+  color: white;
+  background: gray;
+}
+
+.editdescription{
+  color: white;
+  background: gray;
+}
+
+.bio-info>h5{
+  position: relative;
+}
+
+.bio-info>p{
+  position: relative;
+}
+
+
+.bio-info{
+  margin-right: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.bio-info::before{
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  background-color: white;
+  opacity: .2;
+  border-radius: 10px;
 }
 
 .bio_btn{
@@ -47,6 +87,7 @@
 }
 .media{
   margin-left: 30px;
+  position: relative;
 }
 
 .games_owned{
@@ -65,7 +106,6 @@
   margin: 10px;
   height: 250px;
   position: relative;
-  border: solid .3px;
 }
 
 .mygameselector{
@@ -98,16 +138,26 @@
 }
 
 .mycollectionbutton {
+  color:white;
+  border-color: white;
   margin-top: 10px;
-  background: white;
 }
 
 .mycollectionbutton:hover{
-  color:red;
+  color:white;
+  background: red;
 }
 
 
+.myaddgamesbutton{
+  color: white;
+  background: green;
+}
 
+.myaddgamesbutton:hover{
+  color: green;
+  background: lightgreen;
+}
 
 @media(max-width:768px){
   .bio-info{
@@ -118,21 +168,12 @@
     justify-content: center;
   }
 
-  .media-body{
-    margin-left: 0px;
-  }
   .games_owned{
     text-align: center;
     font-size: 2.5rem;
   }
+  .myaddgamesbutton{
+    text-align: center;
+  }
 
 }
-
-// @media(max-width:578px){
-//   .bio-info{
-//     display: block;
-//   }
-//   .media{
-//     margin-left: 50px;
-//   }
-// }

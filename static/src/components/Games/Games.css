@@ -1,20 +1,30 @@
 .shell {
-  height: 100%;
-  background-color: #282C35; }
+  height: 100%; }
 
 .search_menu {
   background-color: #282C35;
-  height: 100vh;
+  min-height: 100vh;
   color: #ffff; }
 
 .games_display {
-  background-color: #989898;
   min-height: 100vh;
   height: 100%;
-  text-align: center; }
+  text-align: center;
+  position: relative;
+  background: url("./../Images/user_background.png") repeat;
+  color: white; }
+
+.games_display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .8;
+  background-color: black; }
 
 .games_shell {
-  background-color: lightblue;
   background-size: cover;
   height: 100%; }
 
@@ -35,16 +45,12 @@
   display: inline-block;
   margin: 10px;
   height: 250px;
-  position: relative;
-  border: solid .3px; }
+  position: relative; }
 
 .gameselector {
   color: white;
   display: block;
   height: 200px; }
-
-.gameselector:hover {
-  color: #009B35; }
 
 .gamecover {
   width: 150px;
@@ -63,11 +69,16 @@
   padding: 4px; }
 
 .collectionbutton {
+  color: white;
+  border-color: white;
   margin-top: 10px; }
 
 .collectionbutton:hover {
   color: yellow;
   background: green; }
+
+.find_games {
+  position: relative; }
 
 @media (max-width: 1028px) {
   .submit_search {

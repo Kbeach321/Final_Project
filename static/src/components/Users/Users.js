@@ -43,7 +43,7 @@ class Users extends Component {
     })
     return (
     <div className="viewrender container-fluid">
-      <div className='row searchbar'>
+      <div className='row usersearchbar'>
         <div className="col-12">
           <form className="form-inline ">
             <span className="current_users"> Find Users </span>

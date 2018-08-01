@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from django.conf import settings
 from django.utils.text import slugify
 from consolelog_app.permissions import IsOwnerOrReadOnly
+from django.db.models import Q
 
 ###################### IGDB API ######################################
 from igdb_api_python.igdb import igdb as igdb

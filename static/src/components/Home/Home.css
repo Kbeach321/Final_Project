@@ -53,7 +53,7 @@ img {
 
 .background-image {
   position: relative;
-  background: url("./../Images/login-screen.jpg") no-repeat center center/cover;
+  background: url("./../Images/user_background.png") repeat;
   min-height: 85.6vh; }
 
 .register {
@@ -69,7 +69,7 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: .9;
+  opacity: .8;
   background-color: black; }
 
 @media (max-width: 1171px) {
