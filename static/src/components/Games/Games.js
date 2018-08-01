@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './Games.css';
-
 import defaultCover from './../Images/no_image.gif';
 let API_URL = process.env.REACT_APP_API_URL
-console.log("potatoes", API_URL)
 
+
+// Component sets state of the page to be re-renderd
 class Games extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +14,14 @@ class Games extends Component {
       selectedTitle: '',
       platforms: '33,22,24,19,4,21,7,8,32,23,11,12'
     }
+    // Binds tools to this
       this._filterGames = this._filterGames.bind(this);
       this._selectPlatform = this._selectPlatform.bind(this);
       this._selectTitle = this._selectTitle.bind(this);
       this._addGame = this._addGame.bind(this);
   }
 
+// Loads all the games on to the page orginally from all platforms //
   componentDidMount() {
    let self = this;
    fetch(`${API_URL}/proxy/games/?platform_id=${this.state.platforms}&search=${this.state.selectedTitle}`)
@@ -39,6 +41,19 @@ class Games extends Component {
    });
   }
 
+// Selects the Platform [raido buttons] to be filtered //
+  _selectPlatform(event){
+    let selectedPlatform = event.target.value;
+    this.setState({selectedPlatform});
+  }
+
+// Selects the title to be filtered //
+  _selectTitle(event) {
+    let selectedTitle = event.target.value;
+    this.setState({selectedTitle});
+  }
+
+// Handler that makes the fetch call to retreive filtered games //
   _filterGames(event) {
     event.preventDefault();
 
@@ -65,21 +80,11 @@ class Games extends Component {
 
   }
 
-  _selectPlatform(event){
-    let selectedPlatform = event.target.value;
-    this.setState({selectedPlatform});
-  }
-
-  _selectTitle(event) {
-    let selectedTitle = event.target.value;
-    this.setState({selectedTitle});
-  }
-
+// adds game to a users profile //
   _addGame(game) {
     game.igdb_id = game.id
     delete game.id
     game.cover = game.cover.url
-    console.log(game)
     let token = localStorage.getItem('auth_token');
     fetch(`${API_URL}/games/`, {
       method: 'POST',
@@ -97,20 +102,22 @@ class Games extends Component {
         return res.json()
       })
       .then(resJSON => {
+        console.log(resJSON)
         // this.setState({authenticated: true});
       })
       .catch(error => console.error('Error:', error));
   }
 
-
+// Shoots off the render
   render() {
     let games = this.state.games.map((game)=>{
       return(
         <div className='gameshell' key={game.id}>
           <a className='gameselector' href="#">
-          <img className='gamecover' src={game.cover ? game.cover.url : defaultCover} alt="User Profile"/>
+          <img className='gamecover' src={game.cover ? game.cover.url : defaultCover} alt="Game Cover"/>
           <div className='gamename'>{game.name}</div> </a>
-          <a href="#" className="addgametag" onClick={(event)=>{event.preventDefault(); this._addGame(game)}}>  <span className="addgame"> Add to Collection + </span> </a>
+          {/* <a href="#" className="addgametag" onClick={(event)=>{event.preventDefault(); this._addGame(game)}}></a> */}
+            <button type="button" className="collectionbutton btn-sm btn-outline-dark" onClick={(event)=>{event.preventDefault(); this._addGame(game)}}> Add to Collection </button> 
         </div>
       )
     })

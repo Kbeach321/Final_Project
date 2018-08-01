@@ -8,6 +8,7 @@ from consolelog_app.serializers import GameSerializer, UsersSerializer, LoginSer
 from rest_framework.response import Response
 from django.conf import settings
 from django.utils.text import slugify
+from consolelog_app.permissions import IsOwnerOrReadOnly
 
 ###################### IGDB API ######################################
 from igdb_api_python.igdb import igdb as igdb
@@ -37,7 +38,7 @@ class UsersListCreateAPIView(generics.ListCreateAPIView):
 class GamesListCreateAPIView(generics.ListCreateAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
-
+    # Creates the game to add to the users page
     def create(self,request,*args,**kwargs):
         id = request.data['igdb_id']
         games = Game.objects.filter(igdb_id=id)
@@ -52,10 +53,22 @@ class GamesListCreateAPIView(generics.ListCreateAPIView):
             response = super().create(request, *args, **kwargs)
         return response
 
+    # # Gets the games for a users collection (foriegn key'd to user)
+    # def get(self, request):
+    #     queryset = request.user.collection.all()
+    #     return
+
+# list of Games for each user
+class MyGamesRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = GameSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def get_queryset(self,request):
+        return Collection.objects.filter(Q(user=self.request.user))
 
 
 
-
+# Uses IGDB Python Wrapper and communicates to pull from 3rd party API #
 class GamesProxyView(APIView):
     def get(self,request):
         result = igdb.games({

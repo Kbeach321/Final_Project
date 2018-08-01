@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router';
 import './Log-in.css';
 
 // Login Component //
@@ -11,6 +10,7 @@ class Login extends Component {
       password: '',
       authenticated: false
     }
+// Binds tools to this
     this._inputHandler = this._inputHandler.bind(this);
     this._login = this._login.bind(this);
   }
@@ -28,21 +28,19 @@ class Login extends Component {
     event.preventDefault();
     let data = this.state;
     let url = `http://localhost:8000/auth/token/create/`;
-
-  fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers:{
-      'Content-Type': 'application/json',
-    }
-  })
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    })
 
 //return your response --> Json
   .then(res => res.json())
-//test the response
+//Set the auth token & authenticate log-in
   .then(resJSON => {
     localStorage.setItem('auth_token', 'token ' + resJSON.auth_token);
-// Authenticate Login
     this.setState({authenticated: true});
 // Push to Profile Page -- When Login confirmed
     this.props.history.push('/profile')

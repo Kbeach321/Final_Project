@@ -34,12 +34,12 @@
   text-align: center;
   display: inline-block;
   margin: 10px;
-  height: 230px;
+  height: 250px;
   position: relative;
   border: solid .3px; }
 
 .gameselector {
-  color: black;
+  color: white;
   display: block;
   height: 200px; }
 
@@ -50,7 +50,7 @@
   width: 150px;
   height: 150px;
   border: solid 1px;
-  margin-top: 2px; }
+  margin-top: 5px; }
 
 .addgametag:hover {
   color: #F6D400; }
@@ -61,6 +61,13 @@
   max-height: 51px;
   overflow: hidden;
   padding: 4px; }
+
+.collectionbutton {
+  margin-top: 10px; }
+
+.collectionbutton:hover {
+  color: yellow;
+  background: green; }
 
 @media (max-width: 1028px) {
   .submit_search {

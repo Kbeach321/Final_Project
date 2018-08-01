@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import './Profile.css';
-// User profile instead of default //
+import defaultCover from './../Images/no_image.gif';
+let API_URL = process.env.REACT_APP_API_URL
 
-// Get request to games end point to get all games
-//  filter by logged in user
-//  get query set method on 
-//  def get quesry set = game.objects.filter(users=self.request.user.pk)
-// or
-// request.user.collection.all()
-
-
+//Profile Component
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -25,26 +19,45 @@ class Profile extends Component {
     this._updateDescription = this._updateDescription.bind(this);
     this._uploadProfile = this._uploadProfile.bind(this);
     this._fileInputHandler = this._fileInputHandler.bind(this);
+    this._loadProfile = this._loadProfile.bind(this);
 
     if(!localStorage.getItem('auth_token')) {
       this.props.history.push('/login')
     }
   }
 
-  _inputHandler(event){
-    if(event.target.name === 'description') {
-      let user = this.state.user;
-      user.description = event.target.value;
-      this.setState({user: user})
-    }
+// Original render of the page -- Based on user
+componentDidMount() {
+  this._loadProfile();
+  this._loadCollection();
+}
+
+// Load Collection Fetch Call
+  _loadCollection(){
+    let token = localStorage.getItem('auth_token');
+    fetch(`${API_URL}/games/`, {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
+    //return your response --> Json
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(resJSON => {
+        this.setState({collection: resJSON});
+      })
+      .catch(error => console.error('Error:', error));
   }
 
-  _fileInputHandler(event){
-    let fileUpload = event.target.files[0]
-     this.setState({picture:fileUpload})
-  }
-
-  componentDidMount() {
+// Loads Profile Information
+  _loadProfile() {
     let self = this;
     let token = localStorage.getItem('auth_token');
     fetch(`http://localhost:8000/profile/`,{
@@ -64,6 +77,16 @@ class Profile extends Component {
       .catch(error => console.error('Error:', error));
   }
 
+// Triggers setting state of description
+  _inputHandler(event){
+    if(event.target.name === 'description') {
+      let user = this.state.user;
+      user.description = event.target.value;
+      this.setState({user: user})
+    }
+  }
+
+// Update Description Fetch Call
   _updateDescription(event) {
     event.preventDefault();
     let data = {
@@ -88,7 +111,13 @@ class Profile extends Component {
       .catch(error => console.error('Error:', error));
      }
 
+// Triggers setting state of profile picture
+  _fileInputHandler(event){
+    let fileUpload = event.target.files[0]
+     this.setState({picture:fileUpload})
+  }
 
+// Upload Profile Image Fetch Call
   _uploadProfile(event) {
     event.preventDefault();
     let url = `http://localhost:8000/profile/`;
@@ -112,7 +141,44 @@ class Profile extends Component {
     .catch(error => console.error('Error:', error));
   }
 
+// Deletes a Game from your record
+  _removeGame(event){
+    let token = localStorage.getItem('auth_token');
+    fetch(`${API_URL}/games/`, {
+      method: 'DELETE',
+      body: JSON.stringify(),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
+    //return your response --> Json
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(resJSON => {
+        this.setState({collection: resJSON});
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+// Shoots off the render
   render() {
+    let collection = this.state.collection.map((game)=>{
+      console.log(game)
+      return(
+        <div className='mygameshell' key={game.igdb_id}>
+          <a className='mygameselector' href="#">
+          <img className='mygamecover' src={game.cover ? game.cover : defaultCover} alt="Game Cover"/>
+          <div className='mygamename'>{game.name}</div> </a>
+          <button type="button" className="mycollectionbutton btn-sm btn-outline-dark" onClick={(event)=>{event.preventDefault(); this._removeGame(game)}}> Remove Game </button>
+        </div>
+      )
+    })
+
     return (
       <div className="profileheight container-fluid">
         <div className="row">
@@ -175,6 +241,7 @@ class Profile extends Component {
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
             <a href="/games"> <p> Add Games + </p> </a>
+            <div className="collection">{collection}</div>
 
           </div>
           </div>

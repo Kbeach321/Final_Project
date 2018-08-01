@@ -19,6 +19,7 @@ from django.conf import settings
 
 from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
                                 GamesProxyView, UserProfileAPIView
+                                # , MyGamesRetrieveUpdateDestroyAPIView
 
 
 urlpatterns = [
@@ -31,7 +32,6 @@ urlpatterns = [
 
     # Profile -- Based on users token
     path('profile/', UserProfileAPIView.as_view(), name='profile'),
-    # path('profile/<int:pk>/', UserProfileListCreateAPIView.as_view(), name='profile-id'),
 
     # Games -- Seach & Display games
     path('proxy/games/', GamesProxyView.as_view(), name='games'),

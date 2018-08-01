@@ -22,7 +22,7 @@
 }
 
 .profileselector {
-  color: black;
+  color: white;
 }
 
 .profileselector:hover {
@@ -31,8 +31,21 @@
 
 .viewrender{
   min-height: 83vh;
-}
+  position: relative;
+  background: url('./../Images/user_background.png') no-repeat center/cover;
+  color: white;
+  }
 
+.viewrender::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .9;
+  background-color: black;
+}
 
 
 
