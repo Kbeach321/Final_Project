@@ -245,7 +245,7 @@ componentDidMount() {
         <div className="games_log row">
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
-            <a href="/games"> <button className= 'myaddgamesbutton btn-sm btn-outline-dark'> Add Games </button> </a>
+            <NavLink to="/games/" className='myaddgamesbutton btn-sm btn-outline-dark'> Add Games</NavLink>
             <div className="collection">{collection}</div>
 
           </div>
