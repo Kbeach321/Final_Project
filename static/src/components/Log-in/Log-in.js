@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Log-in.css';
+import {NavLink} from "react-router-dom";
 let API_URL = process.env.REACT_APP_API_URL
 
 // Login Component //
@@ -69,7 +70,7 @@ class Login extends Component {
           <div className="buttonshell">
             <button type="submit" className="btn btn-success">Submit</button>
             <span className="newuser"> New User? </span>
-            <a href="/Registration" className="btn btn-primary">Register Account</a>
+            <NavLink href="/registration" className="btn btn-primary">Register Account</NavLink>
           </div>
         </form>
       </div>
