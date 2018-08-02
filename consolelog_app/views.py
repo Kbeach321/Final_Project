@@ -10,6 +10,8 @@ from django.conf import settings
 from django.utils.text import slugify
 from consolelog_app.permissions import IsOwnerOrReadOnly
 from django.db.models import Q
+from django.core.mail import send_mail
+
 
 ###################### IGDB API ######################################
 from igdb_api_python.igdb import igdb as igdb
@@ -73,7 +75,7 @@ class GameRetrieveUpdateDestroyAPIView(generics.ListAPIView, generics.DestroyAPI
 
 
 # list of Games for each user
-class GamesListCreateAPIView(generics.ListAPIView):
+class GamesListAPIView(generics.ListAPIView):
     serializer_class = GameSerializer
 
     def get_queryset(self):
@@ -93,3 +95,18 @@ class GamesProxyView(APIView):
         'limit' : 50
         })
         return Response(result.body)
+
+
+class SendEmailAPIView(APIView):
+    def post(self,request,*args,**kwargs):
+        user_id = self.kwargs.get('user_id')
+        to_user=User.objects.get(id=user_id)
+        from_user= request.user
+        send_mail(
+            '{0} has sent you a message'.format(request.user.username),
+            request.data.get("message"),
+            from_user.email,
+            [to_user.email],
+            fail_silently=False,
+        )
+        return Response(status=status.HTTP_201_CREATED)

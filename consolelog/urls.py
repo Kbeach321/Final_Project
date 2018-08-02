@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 
-from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
-                                GamesProxyView, UserProfileAPIView, UsersRetrieveUpdateDestroyAPIView, \
-                                GameRetrieveUpdateDestroyAPIView
+from consolelog_app.views import (IndexView, GamesListAPIView,
+    UsersListCreateAPIView, GamesProxyView, UserProfileAPIView,
+    UsersRetrieveUpdateDestroyAPIView, GameRetrieveUpdateDestroyAPIView,
+    SendEmailAPIView
+)
 
 
 
@@ -42,7 +44,8 @@ urlpatterns = [
     # Users -- Search and display all users
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
     path('users/<int:pk>/', UsersRetrieveUpdateDestroyAPIView.as_view(), name='users-id'),
-    path('users/<int:user_id>/games/',GameRetrieveUpdateDestroyAPIView.as_view() , name='users-games'),
+    path('users/<int:user_id>/games/',GamesListAPIView.as_view() , name='users-games'),
+    path('users/<int:user_id>/email/', SendEmailAPIView.as_view(), name='users-id-email' )
 
 
 ]

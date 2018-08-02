@@ -15,11 +15,48 @@ function GameTile(props){
   )
 }
 
-
 class User extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      message : ''
+    }
+    this._inputHandler=this._inputHandler.bind(this);
+    this._sendEmail=this._sendEmail.bind(this);
   }
+    _inputHandler(event){
+      let obj = {}
+      let key = event.target.name;
+      obj[key] = event.target.value;
+      this.setState(obj)
+    }
+
+    _sendEmail(props){
+      let user = this.props.user
+      let token = localStorage.getItem('auth_token');
+      let message = {message: this.state.message}
+      fetch(`${API_URL}/users/${user.id}/email/`, {
+        method: 'POST',
+        body: JSON.stringify(message),
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization' : token
+        }
+      })
+      //return your response --> Json
+        .then(res => {
+          if (!res.ok) {
+            throw Error(res.statusText)
+          }
+          return
+        })
+        .then(()=> {
+          this.setState({message:""});
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+
   render() {
     console.log('user', this.props.user)
     return (
@@ -30,6 +67,10 @@ class User extends Component {
             <img className='userprofile' src={this.props.user.profile_picture} alt="User Profile"/>
             <div className='username'>{this.props.user.username}</div>
             <div className='username'>{this.props.user.id}</div>
+            <div className="messagebox">
+              <textarea name="message" onChange={this._inputHandler} value={this.state.message}></textarea>
+              <button onClick={this._sendEmail}> Send Message </button>
+            </div>
             <div>{this.props.user.games.map(function(game){
               return <GameTile game={game}/>
             })}</div>

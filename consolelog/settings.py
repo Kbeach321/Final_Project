@@ -127,6 +127,19 @@ MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, "media"))
 MEDIA_URL = '/media/'
 
 
+########## START SMTP CONFIGURATION
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST_USER = 'postmaster@sandbox2b8fc296fdcb4b7e8aa7cd00cbec7d6e.mailgun.org'
+EMAIL_HOST_PASSWORD = '0dbd172fac028eff830bf9f5fcc1ee36-a5d1a068-46b17979'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+DEFAULT_FROM_EMAIL = 'noreply@gentle-stream-36824.COM'  # if you don’t already have this in settings
+SERVER_EMAIL = 'noreply@gentle-stream-36824.COM'  # if you don’t already have this in settings
+########## END SMTP CONFIGURATION
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
