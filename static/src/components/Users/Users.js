@@ -35,7 +35,7 @@ class User extends Component {
       let user = this.props.user
       let token = localStorage.getItem('auth_token');
       let message = {message: this.state.message}
-      fetch(`${API_URL}/users/${user.id}/email/`, {
+      fetch(`${API_URL}/api/users/${user.id}/email/`, {
         method: 'POST',
         body: JSON.stringify(message),
         headers:{
@@ -98,7 +98,7 @@ class Users extends Component {
   componentDidMount(props) {
    let self = this;
 
-   fetch(`${API_URL}/users/`)
+   fetch(`${API_URL}/api/users/`)
    .then(function(response){
      if(!response.ok){
        throw Error(response.statusText);
@@ -120,7 +120,7 @@ class Users extends Component {
     let token = localStorage.getItem('auth_token');
     user.games = []
     this.setState({selectedUser : user})
-    fetch(`${API_URL}/users/${user.id}/games/`, {
+    fetch(`${API_URL}/api/users/${user.id}/games/`, {
       method: 'GET',
       body: JSON.stringify(),
       headers:{

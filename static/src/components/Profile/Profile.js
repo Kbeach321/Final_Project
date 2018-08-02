@@ -36,7 +36,7 @@ componentDidMount() {
 // Load Collection Fetch Call
   _loadCollection(){
     let token = localStorage.getItem('auth_token');
-    fetch(`${API_URL}/games/`, {
+    fetch(`${API_URL}/api/games/`, {
       method: 'GET',
       body: JSON.stringify(),
       headers:{
@@ -61,7 +61,7 @@ componentDidMount() {
   _loadProfile() {
     let self = this;
     let token = localStorage.getItem('auth_token');
-    fetch(`${API_URL}/profile/`,{
+    fetch(`${API_URL}/api/profile/`,{
       method:'GET',
       headers:{
         'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ componentDidMount() {
     let data = {
       description : this.state.user.description
     }
-    let url = `${API_URL}/profile/`;
+    let url = `${API_URL}/api/profile/`;
     let token = localStorage.getItem('auth_token');
     fetch(url, {
       method: 'PATCH',
@@ -121,7 +121,7 @@ componentDidMount() {
 // Upload Profile Image Fetch Call
   _uploadProfile(event) {
     event.preventDefault();
-    let url = `${API_URL}/profile/`;
+    let url = `${API_URL}/api/profile/`;
     let self = this;
     let token = localStorage.getItem('auth_token');
     let formData = new FormData()
@@ -146,7 +146,7 @@ componentDidMount() {
   _removeGame(game){
     let token = localStorage.getItem('auth_token');
     let id = game.igdb_id
-    fetch(`${API_URL}/games/${id}`, {
+    fetch(`${API_URL}/api/games/${id}`, {
       method: 'DELETE',
       body: JSON.stringify(),
       headers:{

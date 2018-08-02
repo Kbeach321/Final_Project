@@ -86,7 +86,7 @@ class Games extends Component {
     delete game.id
     game.cover = game.cover.url
     let token = localStorage.getItem('auth_token');
-    fetch(`${API_URL}/games/`, {
+    fetch(`${API_URL}/api/games/`, {
       method: 'POST',
       body: JSON.stringify(game),
       headers:{

@@ -34,20 +34,20 @@ urlpatterns = [
     path('auth/', include("djoser.urls.authtoken")),
 
     # Profile -- Based on users token
-    path('profile/', UserProfileAPIView.as_view(), name='profile'),
+    path('api/profile/', UserProfileAPIView.as_view(), name='profile'),
 
     # Games -- Seach & Display games
     path('proxy/games/', GamesProxyView.as_view(), name='list-games'),
-    path('games/', GameRetrieveUpdateDestroyAPIView.as_view(), name='games'),
-    path('games/<int:igdb_id>/', GameRetrieveUpdateDestroyAPIView.as_view(), name='games-id'),
+    path('api/games/', GameRetrieveUpdateDestroyAPIView.as_view(), name='games'),
+    path('api/games/<int:igdb_id>/', GameRetrieveUpdateDestroyAPIView.as_view(), name='games-id'),
 
     # Users -- Search and display all users
-    path('users/', UsersListCreateAPIView.as_view(), name='users'),
-    path('users/<int:pk>/', UsersRetrieveUpdateDestroyAPIView.as_view(), name='users-id'),
-    path('users/<int:user_id>/games/',GamesListAPIView.as_view() , name='users-games'),
-    path('users/<int:user_id>/email/', SendEmailAPIView.as_view(), name='users-id-email'),
+    path('api/users/', UsersListCreateAPIView.as_view(), name='users'),
+    path('api/users/<int:pk>/', UsersRetrieveUpdateDestroyAPIView.as_view(), name='users-id'),
+    path('api/users/<int:user_id>/games/',GamesListAPIView.as_view() , name='users-games'),
+    path('api/users/<int:user_id>/email/', SendEmailAPIView.as_view(), name='users-id-email'),
 
-    re_path('^.*/$', IndexView.as_view(), name='index')
+    re_path('^.*/$', IndexView.as_view(), name='index-catch-all')
 ]
 
 from django.conf.urls.static import static
