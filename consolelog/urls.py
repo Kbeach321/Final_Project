@@ -19,7 +19,7 @@ from django.conf import settings
 
 from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
                                 GamesProxyView, UserProfileAPIView, UsersRetrieveUpdateDestroyAPIView, \
-                                GamesListCreateAPIView
+                                GameRetrieveUpdateDestroyAPIView
 
 
 
@@ -35,14 +35,14 @@ urlpatterns = [
     path('profile/', UserProfileAPIView.as_view(), name='profile'),
 
     # Games -- Seach & Display games
-    path('proxy/games/', GamesProxyView.as_view(), name='games'),
-    path('games/', GamesListCreateAPIView.as_view(), name='games-id'),
-    path('users/<int:user_id>/games/',GamesListCreateAPIView.as_view() , name='users_games'),
-
+    path('proxy/games/', GamesProxyView.as_view(), name='list-games'),
+    path('games/', GameRetrieveUpdateDestroyAPIView.as_view(), name='games'),
+    path('games/<int:igdb_id>/', GameRetrieveUpdateDestroyAPIView.as_view(), name='games-id'),
 
     # Users -- Search and display all users
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
     path('users/<int:pk>/', UsersRetrieveUpdateDestroyAPIView.as_view(), name='users-id'),
+    path('users/<int:user_id>/games/',GameRetrieveUpdateDestroyAPIView.as_view() , name='users-games'),
 
 
 ]

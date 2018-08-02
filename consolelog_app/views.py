@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import requests
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.views import APIView
 from consolelog_app.models import Game, User, UserProfile
 from consolelog_app.serializers import GameSerializer, UsersSerializer, LoginSerializer, UserProfileSerializer
@@ -44,8 +44,7 @@ class UsersRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Add games to profile
-class GamesListCreateAPIView(generics.ListCreateAPIView):
-    # queryset = Game.objects.all()
+class GameRetrieveUpdateDestroyAPIView(generics.ListAPIView, generics.DestroyAPIView, generics.CreateAPIView):
     serializer_class = GameSerializer
     # Creates the game to add to the users page
     def create(self,request,*args,**kwargs):
@@ -65,6 +64,12 @@ class GamesListCreateAPIView(generics.ListCreateAPIView):
     # Gets the games for a users collection (foriegn key'd to user)
     def get_queryset(self):
         return self.request.user.collection.all()
+
+    def delete(self,request,*args,**kwargs):
+        id = self.kwargs.get("igdb_id")
+        game = Game.objects.get(igdb_id=id)
+        request.user.collection.remove(game)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 # list of Games for each user

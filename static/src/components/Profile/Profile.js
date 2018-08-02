@@ -142,9 +142,10 @@ componentDidMount() {
   }
 
 // Deletes a Game from your record
-  _removeGame(event){
+  _removeGame(game){
     let token = localStorage.getItem('auth_token');
-    fetch(`${API_URL}/games/`, {
+    let id = game.igdb_id
+    fetch(`${API_URL}/games/${id}`, {
       method: 'DELETE',
       body: JSON.stringify(),
       headers:{
@@ -157,10 +158,14 @@ componentDidMount() {
         if (!res.ok) {
           throw Error(res.statusText)
         }
-        return res.json()
+        return
       })
-      .then(resJSON => {
-        this.setState({collection: resJSON});
+      .then(()=>{
+        let collection = this.state.collection
+        let gameIndex = collection.indexOf(game)
+        collection.splice(gameIndex, 1)
+        console.log('index', gameIndex, collection)
+        this.setState({collection: collection});
       })
       .catch(error => console.error('Error:', error));
   }
