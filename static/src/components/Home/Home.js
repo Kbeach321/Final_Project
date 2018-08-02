@@ -33,7 +33,7 @@ class Home extends Component {
               {/* <a href="registration/" className="btn btn-primary register">Register New Account</a> */}
               <NavLink className="btn btn-primary register" to="/registration/">Register New Account</NavLink>
               {/* <a href="login/" className="btn btn-success login">Log-in Here</a> */}
-              <NavLink className="btn btn-success login" to="/login/">Register New Account</NavLink>
+              <NavLink className="btn btn-success login" to="/login/">Log-in</NavLink>
             </div>
             <div className="row">
               <div className="col-12 startcollection collectionheader"> Log your games in 3 simple steps!</div>
