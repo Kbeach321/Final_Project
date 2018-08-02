@@ -177,10 +177,10 @@ componentDidMount() {
       console.log(game)
       return(
         <div className='mygameshell' key={game.igdb_id}>
-          <a className='mygameselector' href="#">
+          <div className='mygameselector'>
           <img className='mygamecover' src={game.cover ? game.cover : defaultCover} alt="Game Cover"/>
           <div className='mygamename'>{game.name}</div>
-        </a>
+        </div>
           <button type="button" className="mycollectionbutton btn-sm btn-outline-dark" onClick={(event)=>{event.preventDefault(); this._removeGame(game)}}> Remove Game </button>
         </div>
       )
