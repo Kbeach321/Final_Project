@@ -8,6 +8,12 @@
   height: 180px;
   border: solid 1px; }
 
+.profilebutton {
+  position: relative; }
+
+.modaltext {
+  color: black; }
+
 .usershell {
   max-width: 200px;
   text-align: center;

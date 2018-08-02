@@ -20,7 +20,7 @@ igdb = igdb("857a9df19e79338f5a1f9d88bb6a5a4b")
 class IndexView(TemplateView):
     template_name = "index.html"
 
-#User Profile Page -- For a Specific Endpoint
+#User Profile Page -- CURRENT USERS PROFILE
 class UserProfileAPIView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UsersSerializer
@@ -35,9 +35,17 @@ class UsersListCreateAPIView(generics.ListCreateAPIView):
     queryset = User.objects.select_related('profile').all()
     serializer_class = UsersSerializer
 
+#  Shows a user by ID
+class UsersRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UsersSerializer
+    def get_queryset(self):
+        return User.objects.all()
+
+
+
 # Add games to profile
 class GamesListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Game.objects.all()
+    # queryset = Game.objects.all()
     serializer_class = GameSerializer
     # Creates the game to add to the users page
     def create(self,request,*args,**kwargs):
@@ -54,18 +62,17 @@ class GamesListCreateAPIView(generics.ListCreateAPIView):
             response = super().create(request, *args, **kwargs)
         return response
 
-    # # Gets the games for a users collection (foriegn key'd to user)
-    # def get(self, request):
-    #     queryset = request.user.collection.all()
-    #     return
+    # Gets the games for a users collection (foriegn key'd to user)
+    def get_queryset(self):
+        return self.request.user.collection.all()
+
 
 # list of Games for each user
-class MyGamesRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class GamesListCreateAPIView(generics.ListAPIView):
     serializer_class = GameSerializer
-    permission_classes = [IsOwnerOrReadOnly]
 
-    def get_queryset(self,request):
-        return Collection.objects.filter(Q(user=self.request.user))
+    def get_queryset(self):
+        return Game.objects.filter(users=self.kwargs.get("user_id"))
 
 
 

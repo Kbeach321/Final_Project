@@ -18,8 +18,9 @@ from django.urls import path, include
 from django.conf import settings
 
 from consolelog_app.views import IndexView, GamesListCreateAPIView, UsersListCreateAPIView, \
-                                GamesProxyView, UserProfileAPIView
-                                # , MyGamesRetrieveUpdateDestroyAPIView
+                                GamesProxyView, UserProfileAPIView, UsersRetrieveUpdateDestroyAPIView, \
+                                GamesListCreateAPIView
+
 
 
 urlpatterns = [
@@ -36,11 +37,12 @@ urlpatterns = [
     # Games -- Seach & Display games
     path('proxy/games/', GamesProxyView.as_view(), name='games'),
     path('games/', GamesListCreateAPIView.as_view(), name='games-id'),
+    path('users/<int:user_id>/games/',GamesListCreateAPIView.as_view() , name='users_games'),
 
 
     # Users -- Search and display all users
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
-    path('users/<int:pk>/', UsersListCreateAPIView.as_view(), name='users-id'),
+    path('users/<int:pk>/', UsersRetrieveUpdateDestroyAPIView.as_view(), name='users-id'),
 
 
 ]

@@ -1,13 +1,57 @@
 import React, { Component } from 'react';
 import './Users.css';
 import default_profile from './../Images/default-profile.jpg'
+import defaultCover from './../Images/no_image.gif';
+let API_URL = process.env.REACT_APP_API_URL
+
+function GameTile(props){
+  let game = props.game
+  return (
+    <div className='mygameshell' key={game.igdb_id}>
+      <a className='mygameselector' href="#">
+      <img className='mygamecover' src={game.cover ? game.cover : defaultCover} alt="Game Cover"/>
+      <div className='mygamename'>{game.name}</div> </a>
+    </div>
+  )
+}
+
+
+class User extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    console.log('user', this.props.user)
+    return (
+      <div>
+      <div class="modal fade profile-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div className="modaltext modal-content">
+            <img className='userprofile' src={this.props.user.profile_picture} alt="User Profile"/>
+            <div className='username'>{this.props.user.username}</div>
+            <div className='username'>{this.props.user.id}</div>
+            <div>{this.props.user.games.map(function(game){
+              return <GameTile game={game}/>
+            })}</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    )
+  }
+}
+
 
 class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users : []
+      users : [],
+      selectedUser: {
+        games : []
+      },
     }
+    this._selectUser = this._selectUser.bind(this);
   }
 
   componentDidMount(props) {
@@ -19,6 +63,7 @@ class Users extends Component {
        throw Error(response.statusText);
      }
      console.log(response)
+     console.log('response users', response)
      return response.json()
    })
    .then(function(responseJSON){
@@ -30,14 +75,58 @@ class Users extends Component {
    });
   }
 
+  _selectUser(user){
+    let token = localStorage.getItem('auth_token');
+    user.games = []
+    this.setState({selectedUser : user})
+    fetch(`${API_URL}/users/${user.id}/games/`, {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }
+    })
+    //return your response --> Json
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(resJSON => {
+        user.games = resJSON;
+        this.setState({selectedUser: user});
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+//  Another call to retrun games
+
+
   render() {
+    let self = this;
     let users = this.state.users.map(function(user){
+      console.log('user here', user)
       return(
-        <div className='usershell' key={user.username}>
-          <a className='profileselector' href="#">
-          <img className='userprofile' src={user.profile_picture} alt="User Profile"/>
-          <div className='username'>{user.username}</div>
-          </a>
+        // <User user={user} userById={self._userById}/>
+        <div key={user.id}>
+          <div className='usershell' onClick={()=>self._selectUser(user)} data-toggle="modal" data-target={`.profile-modal-lg`} >
+            {/* <a className='profileselector' href="#" onClick={() => self._userById(user.id)}> */}
+            <img className='userprofile' src={user.profile_picture} alt="User Profile"/>
+            <div className='username'>{user.username}</div>
+            {/* </a> */}
+          </div>
+          {/* <div class={`modal fade profile-modal-lg-${user.id}`} tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div className="modaltext modal-content">
+                <img className='userprofile' src={user.profile_picture} alt="User Profile"/>
+                <div className='username'>{user.username}</div>
+                <div> This Will Contain Message me func.</div>
+                <div>GAMES BABY!</div>
+              </div>
+            </div>
+          </div>*/}
         </div>
       )
     })
@@ -59,6 +148,9 @@ class Users extends Component {
           {users}
         </div>
       </div>
+
+      <User user={this.state.selectedUser}/>
+
     </div>
     );
   }
