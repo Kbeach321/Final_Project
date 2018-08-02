@@ -113,13 +113,10 @@ class Games extends Component {
     let games = this.state.games.map((game)=>{
       return(
         <div className='gameshell' key={game.id}>
-          {/* <a className='gameselector' href="#"> */}
           <div className='gameselector'>
           <img className='gamecover' src={game.cover ? game.cover.url : defaultCover} alt="Game Cover"/>
           <div className='gamename'>{game.name}</div>
         </div>
-        {/* </a> */}
-          {/* <a href="#" className="addgametag" onClick={(event)=>{event.preventDefault(); this._addGame(game)}}></a> */}
             <button type="button" className="collectionbutton btn-sm btn-outline-dark" onClick={(event)=>{event.preventDefault(); this._addGame(game)}}> Add to Collection </button>
         </div>
       )

@@ -177,9 +177,10 @@ componentDidMount() {
       console.log(game)
       return(
         <div className='mygameshell' key={game.igdb_id}>
-          <a className='mygameselector' href="#">
+          {/* <a className='mygameselector' href="#"> */}
           <img className='mygamecover' src={game.cover ? game.cover : defaultCover} alt="Game Cover"/>
-          <div className='mygamename'>{game.name}</div> </a>
+          <div className='mygamename'>{game.name}</div>
+        {/* </a> */}
           <button type="button" className="mycollectionbutton btn-sm btn-outline-dark" onClick={(event)=>{event.preventDefault(); this._removeGame(game)}}> Remove Game </button>
         </div>
       )
@@ -246,7 +247,7 @@ componentDidMount() {
         <div className="games_log row">
           <div className="col-12 align-self-center">
             <p className="games_owned"> Collection: </p>
-            <NavLink to="/games/" className='myaddgamesbutton btn-sm btn-outline-dark'> Add Games</NavLink>
+            <NavLink to="/games" className='myaddgamesbutton btn-sm btn-outline-dark'> Add Games</NavLink>
             <div className="collection">{collection}</div>
 
           </div>

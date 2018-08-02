@@ -30,9 +30,7 @@ class Home extends Component {
             <p className="card-text support-text">
               Currently supporing the following consoles: Game Boy, Game Boy Color, Game Boy Advanced, Super Nintendo Entertainment System (SNES), Nintendo 64, Nintendo Gamecube, Xbox, Xbox 360, Sega Saturn, Sega Dreamcast, Playstation, and Playstation 2.</p>
             <div className="center">
-              {/* <a href="registration/" className="btn btn-primary register">Register New Account</a> */}
               <NavLink className="btn btn-primary register" to="/registration">Register New Account</NavLink>
-              {/* <a href="login/" className="btn btn-success login">Log-in Here</a> */}
               <NavLink className="btn btn-success login" to="/login">Log-in</NavLink>
             </div>
             <div className="row">

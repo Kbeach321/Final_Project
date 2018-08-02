@@ -70,7 +70,7 @@ class Login extends Component {
           <div className="buttonshell">
             <button type="submit" className="btn btn-success">Submit</button>
             <span className="newuser"> New User? </span>
-            <NavLink href="/registration" className="btn btn-primary">Register Account</NavLink>
+            <NavLink to="/registration" className="btn btn-primary">Register Account</NavLink>
           </div>
         </form>
       </div>
