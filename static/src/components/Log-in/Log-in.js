@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Log-in.css';
+let API_URL = process.env.REACT_APP_API_URL
 
 // Login Component //
 class Login extends Component {

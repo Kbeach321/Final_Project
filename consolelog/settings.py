@@ -129,8 +129,8 @@ MEDIA_URL = '/media/'
 
 ########## START SMTP CONFIGURATION
 EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = 'postmaster@sandbox2b8fc296fdcb4b7e8aa7cd00cbec7d6e.mailgun.org'
-EMAIL_HOST_PASSWORD = '0dbd172fac028eff830bf9f5fcc1ee36-a5d1a068-46b17979'
+EMAIL_HOST_USER = 'postmaster@sandboxd5d8d2227b9147d880c51469698190d5.mailgun.org'
+EMAIL_HOST_PASSWORD = '235e4392d6a1fae44d6e861f90c90cb2-a5d1a068-331ba9c3'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 

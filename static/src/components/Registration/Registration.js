@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import './Registration.css';
+let API_URL = process.env.REACT_APP_API_URL
 
 class Registration extends Component {
   constructor(props) {
