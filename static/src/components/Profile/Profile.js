@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Profile.css';
 import defaultCover from './../Images/no_image.gif';
+import {NavLink} from "react-router-dom";
 let API_URL = process.env.REACT_APP_API_URL
 
 //Profile Component
