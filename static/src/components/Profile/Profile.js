@@ -60,7 +60,7 @@ componentDidMount() {
   _loadProfile() {
     let self = this;
     let token = localStorage.getItem('auth_token');
-    fetch(`http://localhost:8000/profile/`,{
+    fetch(`${API_URL}/profile/`,{
       method:'GET',
       headers:{
         'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ componentDidMount() {
     let data = {
       description : this.state.user.description
     }
-    let url = `http://localhost:8000/profile/`;
+    let url = `${API_URL}/profile/`;
     let token = localStorage.getItem('auth_token');
     fetch(url, {
       method: 'PATCH',
@@ -120,7 +120,7 @@ componentDidMount() {
 // Upload Profile Image Fetch Call
   _uploadProfile(event) {
     event.preventDefault();
-    let url = `http://localhost:8000/profile/`;
+    let url = `${API_URL}/profile/`;
     let self = this;
     let token = localStorage.getItem('auth_token');
     let formData = new FormData()

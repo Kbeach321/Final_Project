@@ -30,7 +30,7 @@ class Registration extends Component {
         username: this.state.username,
         password: this.state.password
       }
-      let url = `http://localhost:8000/auth/token/create/`;
+      let url = `${API_URL}/auth/token/create/`;
 
     fetch(url, {
       method: 'POST',
@@ -59,7 +59,7 @@ class Registration extends Component {
     event.preventDefault();
     let self = this;
     let data = this.state;
-    let url = `http://localhost:8000/auth/users/create/`;
+    let url = `${API_URL}/auth/users/create/`;
     // console.log(this.state)
     fetch(url, {
       method: 'POST',

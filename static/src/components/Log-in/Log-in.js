@@ -28,7 +28,7 @@ class Login extends Component {
   _login(event) {
     event.preventDefault();
     let data = this.state;
-    let url = `http://localhost:8000/auth/token/create/`;
+    let url = `${API_URL}/auth/token/create/`;
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),

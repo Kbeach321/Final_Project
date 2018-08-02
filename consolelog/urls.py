@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 
 from consolelog_app.views import (IndexView, GamesListAPIView,
@@ -45,9 +45,9 @@ urlpatterns = [
     path('users/', UsersListCreateAPIView.as_view(), name='users'),
     path('users/<int:pk>/', UsersRetrieveUpdateDestroyAPIView.as_view(), name='users-id'),
     path('users/<int:user_id>/games/',GamesListAPIView.as_view() , name='users-games'),
-    path('users/<int:user_id>/email/', SendEmailAPIView.as_view(), name='users-id-email' )
+    path('users/<int:user_id>/email/', SendEmailAPIView.as_view(), name='users-id-email'),
 
-
+    re_path('^.*/$', IndexView.as_view(), name='index')
 ]
 
 from django.conf.urls.static import static

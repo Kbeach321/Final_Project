@@ -98,7 +98,7 @@ class Users extends Component {
   componentDidMount(props) {
    let self = this;
 
-   fetch(`http://localhost:8000/users/`)
+   fetch(`${API_URL}/users/`)
    .then(function(response){
      if(!response.ok){
        throw Error(response.statusText);
