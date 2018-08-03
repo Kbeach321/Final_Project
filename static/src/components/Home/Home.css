@@ -54,7 +54,7 @@ img {
 .background-image {
   position: relative;
   background: url("./../Images/user_background.png") repeat;
-  min-height: 85.6vh; }
+  min-height: 100vh; }
 
 .register {
   margin: 10px; }
