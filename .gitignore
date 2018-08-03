@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .direnv/
 db.sqlite3
+consolelog/settings.py

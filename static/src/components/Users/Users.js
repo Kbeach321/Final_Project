@@ -64,14 +64,17 @@ class User extends Component {
       <div class="modal fade profile-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div className="modaltext modal-content">
+            <div className="topusershell">
+            <div className="userimage">
             <img className='userprofile' src={this.props.user.profile_picture} alt="User Profile"/>
             <div className='username'>{this.props.user.username}</div>
-            <div className='username'>{this.props.user.id}</div>
-            <div className="messagebox">
-              <textarea name="message" onChange={this._inputHandler} value={this.state.message}></textarea>
-              <button onClick={this._sendEmail}> Send Message </button>
             </div>
-            <div>{this.props.user.games.map(function(game){
+            <div className="messagebox">
+              <textarea className="message" name="message" onChange={this._inputHandler} value={this.state.message}></textarea>
+              <button className="sendmessage" onClick={this._sendEmail}> Send Message </button>
+            </div>
+            </div>
+            <div className="usersgames">{this.props.user.games.map(function(game){
               return <GameTile game={game}/>
             })}</div>
           </div>
@@ -150,24 +153,11 @@ class Users extends Component {
     let users = this.state.users.map(function(user){
       console.log('user here', user)
       return(
-        // <User user={user} userById={self._userById}/>
-        <div key={user.id}>
+        <div className="singleUser" key={user.id}>
           <div className='usershell' onClick={()=>self._selectUser(user)} data-toggle="modal" data-target={`.profile-modal-lg`} >
-            {/* <a className='profileselector' href="#" onClick={() => self._userById(user.id)}> */}
             <img className='userprofile' src={user.profile_picture} alt="User Profile"/>
             <div className='username'>{user.username}</div>
-            {/* </a> */}
           </div>
-          {/* <div class={`modal fade profile-modal-lg-${user.id}`} tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div className="modaltext modal-content">
-                <img className='userprofile' src={user.profile_picture} alt="User Profile"/>
-                <div className='username'>{user.username}</div>
-                <div> This Will Contain Message me func.</div>
-                <div>GAMES BABY!</div>
-              </div>
-            </div>
-          </div>*/}
         </div>
       )
     })
@@ -176,21 +166,17 @@ class Users extends Component {
       <div className='row usersearchbar'>
         <div className="col-12">
           <form className="form-inline ">
-            <span className="current_users"> Find Users </span>
-            {/* <div className="searchbar_right">
-              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-              <button className="btn btn-outline-success my-2  submit_search" type="submit">Search</button>
-            </div> */}
+            <span className="current_users"> Users List </span>
           </form>
         </div>
       </div>
       <div className='row display_users'>
-        <div className="col">
+        <div className="col usercontainer">
           {users}
         </div>
       </div>
 
-      <User user={this.state.selectedUser}/>
+        <User user={this.state.selectedUser} className="userbox"/>
 
     </div>
     );
