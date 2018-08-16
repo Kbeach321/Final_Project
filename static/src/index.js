@@ -19,11 +19,7 @@ import Login from './components/Log-in/Log-in.js'
 
 const history = createBrowserHistory()
 
-<head>
-  <title>
-      Console.Log
-  </title>
-</head>
+
 
 ReactDOM.render(
   <Router history={history}>
