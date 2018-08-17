@@ -5,8 +5,10 @@
 }
 
 .userprofile{
-  width: 180px;
-  height: 180px;
+  min-width: 180px;
+  min-height: 180px;
+  max-width: 180px;
+  min-height: 180px;
   border: solid 1px;
   margin: 10px;
 }
