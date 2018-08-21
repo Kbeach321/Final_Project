@@ -4,8 +4,10 @@
   margin-right: 30px; }
 
 .userprofile {
-  width: 180px;
-  height: 180px;
+  min-width: 180px;
+  min-height: 180px;
+  max-width: 180px;
+  min-height: 180px;
   border: solid 1px;
   margin: 10px; }
 
@@ -85,6 +87,6 @@
 .usersgames > .mygameshell > .mygameselector {
   color: black; }
 
-@media (max-width: 400px) {
+@media (max-width: 440px) {
   .display_users {
     text-align: center; } }
